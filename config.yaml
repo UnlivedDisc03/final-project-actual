@@ -1,0 +1,4 @@
+train:
+  agg_func: median #sum, max, mean, median
+  epochs: 1
+  weighted_dataset: True

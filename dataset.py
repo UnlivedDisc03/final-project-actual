@@ -3,6 +3,7 @@ import torch
 import numpy as np
 from ultralytics.data.dataset import YOLODataset
 import ultralytics.data.build as build
+from config import Config
 
 # #below code used from https://y-t-g.github.io/tutorials/yolo-class-balancing/
 # """MIT License
@@ -13,6 +14,7 @@ import ultralytics.data.build as build
 
 class Dataset:
     def __init__(self):
+        self.config = Config()
         self.change_path_in_dataset_yaml()
         self.push_dataset()
 
@@ -49,7 +51,15 @@ val: val\images
             class_weights = np.sum(self.counts) / self.counts
 
             # Aggregation function
-            self.agg_func = np.sum
+            config = Config()
+            if config.agg_function == "sum":
+                self.agg_func = np.sum
+            elif config.agg_function == "mean":
+                self.agg_func = np.mean
+            elif config.agg_function == "max":
+                self.agg_func = np.max
+            elif config.agg_function == "median":
+                self.agg_func = np.median
 
             self.class_weights = np.array(class_weights)
             self.weights = self.calculate_weights()
@@ -71,7 +81,7 @@ val: val\images
 
             self.counts = np.array(self.counts)
             self.counts = np.where(self.counts == 0, 1, self.counts)
-            print("counts" +str(self.counts))
+            print("counts: " +str(self.counts))
 
         def calculate_weights(self):
             """
@@ -93,6 +103,7 @@ val: val\images
                 # You can change this weight aggregation function to aggregate weights differently
                 weight = self.agg_func(self.class_weights[cls])
                 weights.append(weight)
+                #print("Weights: " +str(weights))
             return weights
 
         def calculate_probabilities(self):
@@ -104,6 +115,7 @@ val: val\images
             """
             total_weight = sum(self.weights)
             probabilities = [w / total_weight for w in self.weights]
+            #print("Sampling Probabilities for each label: "+str(probabilities))
             return probabilities
 
         def __getitem__(self, index):
@@ -118,10 +130,11 @@ val: val\images
                 return self.transforms(self.get_image_and_label(index))
 
     def push_dataset(self):
-        #build.YOLODataset = self.YOLOWeightedDataset #weighted dataset
-        #print("Selected weighted dataset")
-
-        build.YOLODataset = YOLODataset #normal dataset
-        print("Selected Standard Dataset")
+        if self.config.weighted_dataset:
+            build.YOLODataset = self.YOLOWeightedDataset #weighted dataset
+            print("Selected weighted dataset")
+        else:
+            build.YOLODataset = YOLODataset #normal dataset
+            print("Selected Standard Dataset")
 
 #dataset = Dataset()
