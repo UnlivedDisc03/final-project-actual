@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
@@ -5,7 +7,7 @@ import yaml
 from config import Config
 from matplotlib.ticker import MultipleLocator
 
-def verify_class_balance(dataset, num_samples=1000):
+def verify_class_balance(dataset):
     """
     Verifies whether the __getitem__ method in the YOLOWeightedDataset class returns a balanced class output.
 
@@ -16,6 +18,10 @@ def verify_class_balance(dataset, num_samples=1000):
     Returns:
         class_counts: A dictionary containing the class counts.
     """
+    cwd = os.getcwd()
+    images = os.path.join(cwd, 'dataset', 'train', 'images')
+    num_samples=len(os.listdir(images))
+
     all_labels = []
     num_samples = min(len(dataset.labels), num_samples)
 
@@ -61,3 +67,4 @@ def plot_class_balance(weighted_cnts, unweighted_cnts, class_names):
     ax.legend()
 
     plt.show()
+

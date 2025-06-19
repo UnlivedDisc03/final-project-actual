@@ -8,3 +8,5 @@ class Config:
             self.agg_function = configs['train']['agg_func']
             self.epochs = configs['train']['epochs']
             self.weighted_dataset = configs['train']['weighted_dataset']
+            self.image_size = configs['train']['image_size']
+            self.yolo = configs['train']['yolo']
