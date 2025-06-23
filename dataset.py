@@ -2,6 +2,7 @@ import os
 import torch
 import numpy as np
 from ultralytics.data.dataset import YOLODataset
+import ultralytics.data.dataset as yolo_dataset_module
 import ultralytics.data.build as build
 from config import Config
 
@@ -15,13 +16,19 @@ from config import Config
 class Dataset:
     def __init__(self):
         self.config = Config()
+        self.cwd = os.getcwd()
+        self.dataset_path = os.path.join(self.cwd, 'dataset', 'dataset.yaml')
+        self.train_image_path = os.path.join(self.cwd, 'dataset', 'train', 'images')
+        self.val_image_path = os.path.join(self.cwd, 'dataset', 'val', 'images')
         self.change_path_in_dataset_yaml()
         self.push_dataset()
 
+    def get_dataset_path(self):
+        return self.dataset_path
+
     def change_path_in_dataset_yaml(self):
-        cwd = os.getcwd()
-        path = os.path.join(cwd, 'dataset')
-        self.dataset_path = os.path.join(cwd, 'dataset', 'dataset.yaml')
+        path = os.path.join(self.cwd, 'dataset')
+        self.dataset_path = os.path.join(self.cwd, 'dataset', 'dataset.yaml')
 
         with open(self.dataset_path, 'w+') as f:
             f.write(fr"""names:

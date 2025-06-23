@@ -9,6 +9,8 @@ from collections import Counter
 from utilities import verify_class_balance, plot_class_balance
 from logger import Logger
 from config import Config
+from customTrainer import CustomTrainer
+import albumentations as A
 
 #issue with multiple OpenMP instances, this bypasses it as well as importing torch before numpy each time.
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
@@ -17,8 +19,35 @@ configs = Config()
 
 def training():
     logger = Logger()
-    model = YOLO("yolov8n.pt")
-    results = model.train(data=dataset.dataset_path, epochs=configs.epochs, imgsz=configs.image_size, device=0, project=logger.logger.project, seed=42)
+    dataset = Dataset()
+    model = YOLO("yolov8n.pt", task="detect")
+
+    #albumentations allows assymetrical augmentations
+    augmentations = A.Compose([
+        A.RandomScale(scale_limit=(0.25, 1.15), p=1.0) #in most cases tomatoes will appear distant and small, all images are close ups. 75% zoom out - 10% zoom in.
+        A.Rotate(limit=15, p=0.33), #to account for any human error in slight tilt
+        A.HorizontalFlip(p=0.5),
+        A.RandomBrightnessContrast(brightness_limit=(0.90, 1.25), contrast_limit=0.2, p=0.5), #applies slight increase in brightness to account for outdoor recordings exposed to intense sun and light
+        #A.Mosaic #see if it has effects
+        #A.CoarseDropout()
+        A.OneOf([
+            A.Perspective(scale=0.00025), #little distortion
+            A.Affine(shear={"x":(-7,7), "y": (-7,7)}, p=0.33) #applies Shear from regular yolo augmentation, Relatively low values as to not overdo it.
+        ])
+    ])
+
+
+    results = model.train(
+        data=dataset.dataset_path,
+        epochs=configs.epochs,
+        imgsz=configs.image_size,
+        device=0,
+        project=logger.logger.project,
+        seed=42,
+
+        #---augmentations---
+        #USE ALBUMENTATIONS FOR THIS
+        )
 
     # confirms which dataset was used (weighted or standard)
     print(model.trainer.train_loader.dataset)
@@ -44,7 +73,5 @@ if __name__ == "__main__":
     print("PyTorch version:", torch.__version__)
     print("CUDA available:", torch.cuda.is_available())
     print("CUDA version:", torch.version.cuda)
-
-    dataset = Dataset()
 
     training()
