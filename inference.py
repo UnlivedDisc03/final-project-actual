@@ -31,7 +31,7 @@ def inference():
     print(device)
 
     cwd = os.getcwd()
-    desired_model = 6 #run number (for testing simplicity sake) 6=unbalanced 100 epoch images, 7 = rebalanced
+    desired_model = 7 #run number (for testing simplicity sake) 6=unbalanced 100 epoch images, 7 = rebalanced
     model_path = os.path.join(cwd, 'runs', 'detect', f'train{desired_model}', 'weights', 'best.pt')
 
     model = YOLO(model_path)

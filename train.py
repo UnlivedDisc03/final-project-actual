@@ -24,17 +24,17 @@ def training():
 
     #albumentations allows assymetrical augmentations
     augmentations = A.Compose([
-        A.RandomScale(scale_limit=(0.25, 1.15), p=1.0) #in most cases tomatoes will appear distant and small, all images are close ups. 75% zoom out - 10% zoom in.
+        A.RandomScale(scale_limit=(0.25, 1.15), p=1.0), #in most cases tomatoes will appear distant and small, all images are close ups. 75% zoom out - 10% zoom in.
         A.Rotate(limit=15, p=0.33), #to account for any human error in slight tilt
         A.HorizontalFlip(p=0.5),
         A.RandomBrightnessContrast(brightness_limit=(0.90, 1.25), contrast_limit=0.2, p=0.5), #applies slight increase in brightness to account for outdoor recordings exposed to intense sun and light
         #A.Mosaic #see if it has effects
-        #A.CoarseDropout()
+        A.CoarseDropout(num_holes_range=(1, 3),hole_height_range=(0.1, 0.2),hole_width_range=(0.1, 0.2),fill=0), #creates black squares to prevent over-reliance on specific features and improve robustness of detection
         A.OneOf([
             A.Perspective(scale=0.00025), #little distortion
             A.Affine(shear={"x":(-7,7), "y": (-7,7)}, p=0.33) #applies Shear from regular yolo augmentation, Relatively low values as to not overdo it.
         ])
-    ])
+    ], bbox_params=A.BboxParams(format="yolo", label_fields=["class_labels"]))
 
 
     results = model.train(
@@ -43,10 +43,7 @@ def training():
         imgsz=configs.image_size,
         device=0,
         project=logger.logger.project,
-        seed=42,
-
-        #---augmentations---
-        #USE ALBUMENTATIONS FOR THIS
+        seed=42
         )
 
     # confirms which dataset was used (weighted or standard)

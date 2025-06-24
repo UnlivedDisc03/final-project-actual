@@ -1,6 +1,6 @@
 train:
   agg_func: median #sum, max, mean, median
-  epochs: 3
+  epochs: 10
   weighted_dataset: True
   image_size: 640
   yolo: 8
