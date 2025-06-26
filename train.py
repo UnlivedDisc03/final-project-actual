@@ -1,5 +1,8 @@
 import torch
 import numpy as np
+from stringzilla import translate
+from torchvision.transforms.v2.functional import perspective
+
 from dataset import Dataset
 from ultralytics import YOLO
 from ultralytics.data.dataset import YOLODataset
@@ -10,32 +13,20 @@ from utilities import verify_class_balance, plot_class_balance
 from logger import Logger
 from config import Config
 from customTrainer import CustomTrainer
-import albumentations as A
 
 #issue with multiple OpenMP instances, this bypasses it as well as importing torch before numpy each time.
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 configs = Config()
 
+#TRY WITH DIFFERENT FRUITS AND VEGGIES at the end
+#Think of something thatll introduce novelty
+
 def training():
     logger = Logger()
     dataset = Dataset()
     model = YOLO("yolov8n.pt", task="detect")
-
-    #albumentations allows assymetrical augmentations
-    augmentations = A.Compose([
-        A.RandomScale(scale_limit=(0.25, 1.15), p=1.0), #in most cases tomatoes will appear distant and small, all images are close ups. 75% zoom out - 10% zoom in.
-        A.Rotate(limit=15, p=0.33), #to account for any human error in slight tilt
-        A.HorizontalFlip(p=0.5),
-        A.RandomBrightnessContrast(brightness_limit=(0.90, 1.25), contrast_limit=0.2, p=0.5), #applies slight increase in brightness to account for outdoor recordings exposed to intense sun and light
-        #A.Mosaic #see if it has effects
-        A.CoarseDropout(num_holes_range=(1, 3),hole_height_range=(0.1, 0.2),hole_width_range=(0.1, 0.2),fill=0), #creates black squares to prevent over-reliance on specific features and improve robustness of detection
-        A.OneOf([
-            A.Perspective(scale=0.00025), #little distortion
-            A.Affine(shear={"x":(-7,7), "y": (-7,7)}, p=0.33) #applies Shear from regular yolo augmentation, Relatively low values as to not overdo it.
-        ])
-    ], bbox_params=A.BboxParams(format="yolo", label_fields=["class_labels"]))
-
+    dataset_path = os.path.join(os.getcwd(), 'dataset', 'dataset.yaml')
 
     results = model.train(
         data=dataset.dataset_path,
@@ -43,7 +34,15 @@ def training():
         imgsz=configs.image_size,
         device=0,
         project=logger.logger.project,
-        seed=42
+        seed=42,
+        degrees=20, #to account for slight rotations during growth as well as human error in holding phone slightly diagonally
+        translate=0.25,
+        scale=0.5, #most images appear as close-ups therefore scaling is required to both account for farther shots and close shots.
+        shear=2.5, #slight shearing of image improves generalization of viewing angles and tilts
+        perspective=0.00025, #slight perspective added to improve robustness with varying camera angles but not too much.
+        fliplr=0.5, #good augmentation method for more data to train on
+        #mosaic=0.5 #combines numerous images together, slicing them up. Could lead to improvements in detecting partially obscured tomatoes
+        erasing=0.45 #erases parts of the image, helps reduce over-reliance on certain features increasing model robustness.
         )
 
     # confirms which dataset was used (weighted or standard)
