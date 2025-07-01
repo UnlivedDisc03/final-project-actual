@@ -4,7 +4,6 @@ import random
 import torch
 import cv2
 
-
 def replay_latest():
     cwd = os.getcwd()
     prediction_path = os.path.join(cwd, 'prediction_results', 'latest_prediction', '17.avi')
