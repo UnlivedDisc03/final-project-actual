@@ -35,17 +35,17 @@ def training():
         device=0,
         project=logger.logger.project,
         seed=42,
-        degrees=20, #to account for slight rotations during growth as well as human error in holding phone slightly diagonally
-        translate=0.25,
+        degrees=10, #to account for slight rotations during growth as well as human error in holding phone slightly diagonally
+        translate=0.20,
         scale=0.5, #most images appear as close-ups therefore scaling is required to both account for farther shots and close shots.
-        shear=1.5, #slight shearing of image improves generalization of viewing angles and tilts
-        perspective=0.00015, #slight perspective added to improve robustness with varying camera angles but not too much.
+        shear=0.5, #slight shearing of image improves generalization of viewing angles and tilts
+        perspective=0.00005, #slight perspective added to improve robustness with varying camera angles but not too much.
         fliplr=0.5, #good augmentation method for more data to train on
         #mosaic=0.5 #combines numerous images together, slicing them up. Could lead to improvements in detecting partially obscured tomatoes
         erasing=0.5, #erases parts of the image, helps reduce over-reliance on certain features increasing model robustness.
         hsv_h=0.0, #disables hue adjustments as colours play a crucial role for deciding ripeness
         hsv_s=0.0,#disables sautration adjustements for same reason
-        hsv_v=0.25,#adds slight brightness adjustment to account for sun and shade.
+        hsv_v=0.1,#adds slight brightness adjustment to account for sun and shade.
         )
 
     # confirms which dataset was used (weighted or standard)

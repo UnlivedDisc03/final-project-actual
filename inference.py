@@ -6,7 +6,7 @@ import cv2
 
 def replay_latest():
     cwd = os.getcwd()
-    prediction_path = os.path.join(cwd, 'prediction_results', 'latest_prediction', '17.avi')
+    prediction_path = os.path.join(cwd, 'prediction_results', 'latest_prediction', 'trackedResult.mp4')
     print(prediction_path)
     capture = cv2.VideoCapture(prediction_path)
 
