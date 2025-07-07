@@ -1,8 +1,6 @@
 import torch
 import numpy as np
-from stringzilla import translate
 from torchvision.transforms.v2.functional import perspective
-
 from dataset import Dataset
 from ultralytics import YOLO
 from ultralytics.data.dataset import YOLODataset
@@ -37,11 +35,11 @@ def training():
         seed=42,
         degrees=10, #to account for slight rotations during growth as well as human error in holding phone slightly diagonally
         translate=0.20,
-        scale=0.5, #most images appear as close-ups therefore scaling is required to both account for farther shots and close shots.
-        shear=0.5, #slight shearing of image improves generalization of viewing angles and tilts
+        scale=0.25, #most images appear as close-ups therefore scaling is required to both account for farther shots and close shots.
+        shear=0.25, #slight shearing of image improves generalization of viewing angles and tilts
         perspective=0.00005, #slight perspective added to improve robustness with varying camera angles but not too much.
         fliplr=0.5, #good augmentation method for more data to train on
-        #mosaic=0.5 #combines numerous images together, slicing them up. Could lead to improvements in detecting partially obscured tomatoes
+        mosaic=0.33, #combines numerous images together, slicing them up. Could lead to improvements in detecting partially obscured tomatoes
         erasing=0.5, #erases parts of the image, helps reduce over-reliance on certain features increasing model robustness.
         hsv_h=0.0, #disables hue adjustments as colours play a crucial role for deciding ripeness
         hsv_s=0.0,#disables sautration adjustements for same reason
