@@ -3,7 +3,7 @@ import yaml
 from config import Config
 
 class Logger:
-    def __init__(self, logger_name='Experiment:', project='Final Individual Project'):
+    def __init__(self, logger_name='Tomato/Disease:', project='Final Individual Project'):
         with open('config.yaml', 'r') as f:
             config = yaml.safe_load(f)
 

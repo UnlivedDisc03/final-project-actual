@@ -155,4 +155,31 @@ val: val\images
             build.YOLODataset = YOLODataset #normal dataset
             print("Selected Standard Dataset")
 
+class DiseaseDataset:
+    def __init__(self):
+        self.cwd = os.getcwd()
+        self.dataset_path = os.path.join(self.cwd, 'disease data', 'data.yaml')
+        self.change_path_in_dataset_yaml()
+
+    def change_path_in_dataset_yaml(self):
+        path= os.path.join(self.cwd, 'disease data')
+        with open(self.dataset_path, 'w+') as f:
+            f.write(fr"""names:
+  - Early Blight
+  - Healthy
+  - Late Blight
+  - Leaf Miner
+  - Leaf Mold
+  - Mosaic Virus
+  - Septoria
+  - Spider Mites
+  - Yellow Leaf Curl Virus
+nc: 9
+path: {path}
+train: train\images
+val: val\images
+    """)
+            print("Dataset File Updated.")
+
 #dataset = Dataset()
+#dataset = DiseaseDataset()
