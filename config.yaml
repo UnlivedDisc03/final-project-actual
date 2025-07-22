@@ -1,10 +1,10 @@
 train:
   agg_func: median #sum, max, mean, median
-  epochs: 100
+  epochs: 120
   weighted_dataset: True
   image_size: 640
   yolo: 8
-  train_tomato: False #True for tomato, false for disease
+  train_tomato: True #True for tomato, false for disease
 
 augmentations:
   seed: 42

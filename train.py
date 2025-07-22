@@ -36,10 +36,12 @@ def training_tomato():
         epochs=configs.epochs,
         imgsz=configs.image_size,
         optimizer='AdamW',
-        dropout=0.15, #stronger dropout
-        lr0=0.0001,#initial learning rate, 0.001 needed for AdamW, reduced to prevent overfitting. All previois experience dictates lowerd learning rate with L2 always ahd the best effects on overfitting
+        dropout=0.15, #stronger dropout,
+        minimum_epochs=100, #custom additon made to YOLO's trainer.py to allow minimum training epochs
+        patience=3,
+        lr0=0.001,#initial learning rate, 0.001 needed for AdamW, reduced to prevent overfitting. All previois experience dictates lowerd learning rate with L2 always ahd the best effects on overfitting
         lrf=0.00001,#final learning rate
-        weight_decay=0.0005, #slightly stronger weight decay
+        weight_decay=0.00075, #slightly stronger weight decay
         workers=4,
         device=0,
         project='Tomato Training Output' if configs.train_tomato else 'Disease Training Output',

@@ -7,12 +7,12 @@ from ultralytics import YOLO
 cwd = os.getcwd()
 
 #get and load first model (TOMATO DETECTION)
-desired_model_1 = 7  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
+desired_model_1 = ""  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
 model_path_1 = os.path.join(cwd, 'runs', 'detect', f'train{desired_model_1}', 'weights', 'best.pt')
 model1 = YOLO(model_path_1)
 
 #get and load second model (DISEASE DETECTION)
-desired_model_2 = 11  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
+desired_model_2 = 15  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
 model_path_2 = os.path.join(cwd, 'Disease Training Output', f'train{desired_model_2}', 'weights', 'best.pt')
 model2 = YOLO(model_path_2)
 
@@ -56,8 +56,8 @@ SELECTED_CLASS_IDS_2 = [
 
 # settings
 #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
-SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input just tomato
-TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/result100EpochAdamW.mp4" #save output
+SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatosAneta2.mp4") #input just tomato
+TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/result100ESEpochAdamW(tomatoes).mp4" #save output
 
 # create BYTETracker instance
 byte_tracker1 = sv.ByteTrack(
