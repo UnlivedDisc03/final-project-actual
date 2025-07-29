@@ -31,6 +31,7 @@ def sql_connect():
 
 def main():
     #connect to sql server
+    current_scan_id = 0
     if use_sql:
         connection = sql_connect()
         cursor = connection.cursor()
@@ -201,19 +202,14 @@ def main():
     for track_id, tomato in all_tomatoes.items(): #track id correlates to the id of each tomato, tomatoes correlates to the data stored in all_tomatoes
         average_confidence = tomato["confidence"] / tomato["frame_count"]
         tomato["confidence"] = average_confidence
+        if use_sql: #if sql tracking is enabled, the record of that tomato will be added
+            insert_statement = f"""INSERT INTO Tomatoes (ScanID, TomatoID, TomatoType, ConfidenceTomato)
+    VALUES ({current_scan_id}, {tomato["track_id"]}, '{tomato["class_name"]}', {tomato["confidence"]});"""
+            print(insert_statement)
+            cursor.execute(insert_statement)
 
-        insert_statement = f"""INSERT INTO Tomatoes (
-                            ScanID,
-                            TomatoID,
-                            TomatoType,
-                            ConfidenceTomato
-                        )
-                        VALUES ({current_scan_id}, {tomato["track_id"]}, {tomato["class_name"]}, {tomato["confidence"]});
-                    """
-        #cursor.execute(insert_statement)
-        print(insert_statement)
-
-
-    print(all_tomatoes)
+    #commits all changes made to database and closes the cursor
+    if use_sql:
+        connection.commit()
 
 main()
