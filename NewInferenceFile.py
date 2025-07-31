@@ -127,13 +127,14 @@ def main():
     #trace_annotator = sv.TraceAnnotator(thickness=4, trace_length=50) #trace annotator creates a trailing line to show movement progress. Inapplicable when camera position moves.
 
     all_tomatoes = {}
+    all_diseases = {}
+    frames_running = []
 
     # define callback function to be used in video processing
     def callback(frame: np.ndarray, index: int,) -> np.ndarray:
         annotated_frame = frame.copy()
 
     #------------------------ TOMATO TRACKING --------------------
-
         # model prediction on single frame and conversion to supervision Detections
         results = model1(frame, verbose=False)[0]
         detections = sv.Detections.from_ultralytics(results)
@@ -176,6 +177,22 @@ def main():
         detections2 = detections2[np.isin(detections2.class_id, SELECTED_CLASS_IDS_2)]
         # tracking detections
         detections2 = byte_tracker2.update_with_detections(detections2)
+
+        # Extracts valuable info from each track id (each tracked disease) which I can use to store on the database for insights.
+        for confidence, class_id, tracker_id in zip(detections2.confidence, detections2.class_id,detections2.tracker_id):  # zip combines 3 lists into one for easier accessing
+            if tracker_id not in all_diseases:  # if the disease with a specific id isnt already in the dictionary, add it
+                all_diseases[tracker_id] = {
+                    "track_id": tracker_id,
+                    "class_id": class_id,
+                    "class_name": model2.model.names[class_id],
+                    "confidence": confidence,
+                    "frame_count": 1,
+                    "appeared_at": round(len(frames_running)/60)}  # frame count keeps track how many times its been in frame for average confidence
+            else:  # if disease with said ID already exists, sum the confidence and frame count over the frames its visible in.
+                all_diseases[tracker_id]["confidence"] += confidence  # each frame adds confidence scores for a total
+                all_diseases[tracker_id][
+                    "frame_count"] += 1  # increases frame count to keep track of what to divide confidence by to find average
+
         labels_2 = [
             f"#{tracker_id} {model2.model.names[class_id]} {confidence:0.2f}"
             for confidence, class_id, tracker_id
@@ -187,6 +204,8 @@ def main():
             scene=annotated_frame, detections=detections2)
         annotated_frame = label_annotator.annotate(
             scene=annotated_frame, detections=detections2, labels=labels_2)
+
+        frames_running.append("x")#increase count of current video time
 
         # return frame with box and label annotated result
         return annotated_frame
@@ -205,6 +224,15 @@ def main():
         if use_sql: #if sql tracking is enabled, the record of that tomato will be added
             insert_statement = f"""INSERT INTO Tomatoes (ScanID, TomatoID, TomatoType, ConfidenceTomato)
     VALUES ({current_scan_id}, {tomato["track_id"]}, '{tomato["class_name"]}', {tomato["confidence"]});"""
+            print(insert_statement)
+            cursor.execute(insert_statement)
+
+    for track_id, disease in all_diseases.items():
+        average_confidence = disease["confidence"] / disease["frame_count"]
+        disease["confidence"] = average_confidence
+        if use_sql:
+            insert_statement = f"""INSERT INTO Diseases (ScanID, DiseaseID, DiseaseType, ConfidenceDisease, SecondsIntoVideo)
+    VALUES ({current_scan_id}, {disease["track_id"]}, '{disease["class_name"]}', {disease["confidence"]}, {disease["appeared_at"]});"""
             print(insert_statement)
             cursor.execute(insert_statement)
 
