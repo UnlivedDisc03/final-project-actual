@@ -28,7 +28,8 @@ def training_tomato():
         dataset = Dataset()
     else:
         dataset = DiseaseDataset()
-    model = YOLO("yolov8n.pt", task="detect")
+    #model = YOLO("yolov8n.pt", task="detect")
+    model = YOLO("yolo12n.pt", task="detect")
     dataset_path = os.path.join(os.getcwd(), 'dataset', 'dataset.yaml') if configs.train_tomato else os.path.join(os.getcwd(), 'disease data', 'data.yaml')
 
     results = model.train(

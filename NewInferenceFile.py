@@ -3,6 +3,7 @@ import numpy as np
 import supervision as sv
 from ultralytics import YOLO
 import pyodbc
+from collections import Counter
 
 use_sql = True
 #for examiner purposes if they do not wish to set up sql workbench and its relevant database info when running the code
@@ -43,7 +44,7 @@ def main():
     cwd = os.getcwd()
 
     #get and load first model (TOMATO DETECTION)
-    desired_model_1 = ""  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
+    desired_model_1 = "V12-1K"  # run number (for testing simplicity sake) ""=best, 8=1280 v8, v12 = V12, V12-1K = 1000imgsz
     model_path_1 = os.path.join(cwd, 'runs', 'detect', f'train{desired_model_1}', 'weights', 'best.pt')
     model1 = YOLO(model_path_1)
 
@@ -70,6 +71,7 @@ def main():
         for class_name in SELECTED_CLASS_NAMES_1
     ]
 
+    tomato_history = {} #a dictionary to keep track of the mode ripeness.
     #--------------------- Create dict of  classes Disease ----------------------
 
     # dict mapping class_id to class_name
@@ -88,12 +90,14 @@ def main():
         for class_name in SELECTED_CLASS_NAMES_2
     ]
 
+    disease_history = {} #a dictionary to keep track of the mode disease.
     #---------------------------------------- Video selection and ByteTracker formulation -----------------------------
+
 
     # settings
     #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
-    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatosAneta.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/result100ESEpochAdamW(tomatoes2).mp4" #save output
+    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input just tomato
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/TomatoMixed-resultYOLOv12-1000(smoothed-modeClass-LoweredMatch).mp4" #save output
 
     # create BYTETracker instance
     byte_tracker1 = sv.ByteTrack(
@@ -106,14 +110,16 @@ def main():
     byte_tracker1.reset()
 
     byte_tracker2 = sv.ByteTrack(
-        track_activation_threshold=0.25, #confidence needed to start tracking
+        track_activation_threshold=0.70, #confidence needed to start tracking
         lost_track_buffer=60, #for how many frames to keep including lost tracks after dissapearance, match with fps, Good for tracks that dissapear.
-        minimum_matching_threshold=0.70,
+        minimum_matching_threshold=0.40,
         frame_rate=60, #frame rate of tracker to match 60fps of vide
         minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
     )
     byte_tracker2.reset()
 
+    smoother1 = sv.DetectionsSmoother(length=5) #smoother keeps history of detections and provides smoothed predictions for detections
+    smoother2 = sv.DetectionsSmoother(length=5) #smoother for disease
     # create VideoInfo instance
     video_info = sv.VideoInfo.from_video_path(SOURCE_VIDEO_PATH)
 
@@ -138,10 +144,16 @@ def main():
         # model prediction on single frame and conversion to supervision Detections
         results = model1(frame, verbose=False)[0]
         detections = sv.Detections.from_ultralytics(results)
+
+        #apply Non Maximum Supression to reduce box overlap.
+        #detections = detections.with_nms(threshold=0.50)
+
         # only consider class id from selected_classes defined above
         detections = detections[np.isin(detections.class_id, SELECTED_CLASS_IDS_1)]
+
         # tracking detections
         detections = byte_tracker1.update_with_detections(detections)
+        detections = smoother1.update_with_detections(detections) #adds smoothing which reduces jittering of detection boxes.
 
         #Extracts valuable info from each track id (each tracked tomato) which I can use to store on the database for insights.
         for confidence, class_id, tracker_id in zip(detections.confidence, detections.class_id, detections.tracker_id): #zip combines 3 lists into one for easier accessing
@@ -152,9 +164,11 @@ def main():
                 "class_name": model1.model.names[class_id],
                 "confidence": confidence,
                 "frame_count": 1}#frame count keeps track how many times its been in frame for average confidence
+                tomato_history[tracker_id] = [class_id]#initializes tomato history dict
             else:#if tomato with said ID already exists, sum the confidence and frame count over the frames its visible in.
                 all_tomatoes[tracker_id]["confidence"] += confidence #each frame adds confidence scores for a total
                 all_tomatoes[tracker_id]["frame_count"] += 1 #increases frame count to keep track of what to divide confidence by to find average
+                tomato_history[tracker_id].append(class_id) #adds current detection class to the list
 
         labels_1 = [
             f"#{tracker_id} {model1.model.names[class_id]} {confidence:0.2f}"
@@ -173,10 +187,12 @@ def main():
         # model prediction on single frame and conversion to supervision Detections
         results2 = model2(frame, verbose=False)[0]
         detections2 = sv.Detections.from_ultralytics(results2)
+
         # only consider class id from selected_classes defined above
         detections2 = detections2[np.isin(detections2.class_id, SELECTED_CLASS_IDS_2)]
         # tracking detections
         detections2 = byte_tracker2.update_with_detections(detections2)
+        detections2 = smoother2.update_with_detections(detections2)
 
         # Extracts valuable info from each track id (each tracked disease) which I can use to store on the database for insights.
         for confidence, class_id, tracker_id in zip(detections2.confidence, detections2.class_id,detections2.tracker_id):  # zip combines 3 lists into one for easier accessing
@@ -217,8 +233,13 @@ def main():
         callback=callback
     )
 
+
+
     #goes over each dictionary value and updates it with the averaged confidence
     for track_id, tomato in all_tomatoes.items(): #track id correlates to the id of each tomato, tomatoes correlates to the data stored in all_tomatoes
+        majority_class_id = Counter(tomato_history[track_id]).most_common(1)[0][0]#finds most common appearing tomato class.
+        tomato["class_id"] = majority_class_id #sets the class id of that tomato as the most common one, a work around for class jittering
+        tomato["class_name"] = model1.model.names[majority_class_id]
         average_confidence = tomato["confidence"] / tomato["frame_count"]
         tomato["confidence"] = average_confidence
         if use_sql: #if sql tracking is enabled, the record of that tomato will be added
