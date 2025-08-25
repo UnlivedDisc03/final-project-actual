@@ -52,7 +52,7 @@ def main():
     cwd = os.getcwd()
 
     # get and load the tomato detector model.
-    desired_model_1 = 'Detector'
+    desired_model_1 = 'V12-1K' #detector
     model_path_1 = os.path.join(cwd, 'runs', 'detect', f'train{desired_model_1}', 'weights', 'best.pt')
     model1 = YOLO(model_path_1)
 
@@ -175,7 +175,8 @@ def main():
                 "confidence": confidence,
                 "frame_count": 1}#frame count keeps track how many times its been in frame for average confidence
                 tomato_history[tracker_id] = [class_id]#initializes tomato history dict
-                save_tomatoes(frame, detections, tracker_id) #saves tomato image only on the first frame of detection
+
+                save_tomatoes(frame, detections, tracker_id) #saves tomato image only on the first frame of detection, labels as a
 
             else:#if tomato with said ID already exists, sum the confidence and frame count over the frames its visible in.
                 all_tomatoes[tracker_id]["confidence"] += confidence #each frame adds confidence scores for a total
@@ -220,8 +221,7 @@ def main():
                     "appeared_at": round(len(frames_running)/60)}  # frame count keeps track how many times its been in frame for average confidence
             else:  # if disease with said ID already exists, sum the confidence and frame count over the frames its visible in.
                 all_diseases[tracker_id]["confidence"] += confidence  # each frame adds confidence scores for a total
-                all_diseases[tracker_id][
-                    "frame_count"] += 1  # increases frame count to keep track of what to divide confidence by to find average
+                all_diseases[tracker_id]["frame_count"] += 1  # increases frame count to keep track of what to divide confidence by to find average
 
         labels_2 = [
             f"#{tracker_id} {model2.model.names[class_id]} {confidence:0.2f}"
@@ -248,11 +248,12 @@ def main():
     )
 
 #----------------------- RIPENESS DETECTION ------------------------------------------------
-    for i in range(len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))):  # for amount of images in DetectedTomatoes
-        image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
-        results3 = model3(image_path)
-        detection3 = sv.Detections.from_ultralytics(results3)
-        print(detection3.class_id)
+
+    # for i in range(len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))):  # for amount of images in DetectedTomatoes
+    #     image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
+    #     results3 = model3(image_path)
+    #     detection3 = sv.Detections.from_ultralytics(results3)
+    #     print(detection3.class_id)
 
 #----------------------- UPDATING CONFIDENCES AND INSERTING TO SQL ---------------------------
 
