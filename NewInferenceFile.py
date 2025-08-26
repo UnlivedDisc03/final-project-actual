@@ -5,7 +5,8 @@ from ultralytics import YOLO
 import pyodbc
 from collections import Counter
 import cv2
-import random
+from PIL import Image
+import imagehash
 
 use_sql = True
 #for examiner purposes if they do not wish to set up sql workbench and its relevant database info when running the code
@@ -33,6 +34,7 @@ def sql_connect():
 #---------------------------------------------------------------------------------------
 
 def main():
+
     #wipes last runs tomato images
     tomato_folder = os.path.join(os.getcwd(), "DetectedTomatoes")
     for image in os.listdir(tomato_folder): #for each image in tomatofolder
@@ -65,8 +67,6 @@ def main():
     desired_model_3 = "V12-1K"  # run number (for testing simplicity sake) ""=best, 8=1280 v8, v12 = V12, V12-1K = 1000imgsz
     model_path_3 = os.path.join(cwd, 'runs', 'detect', f'train{desired_model_3}', 'weights', 'best.pt')
     model3 = YOLO(model_path_3)
-
-    tomato_history = {} #a dictionary to keep track of the mode ripeness.
 
     #takes class names of model, chooses which ones to use (omits healthy leaf detection)
     CLASS_NAMES_DICT_2 = model2.model.names
@@ -122,6 +122,7 @@ def main():
     all_tomatoes = {}
     all_diseases = {}
     frames_running = []
+    tomato_history = {}  # a dictionary to keep track of the mode ripeness.
 
 #-------------------------CALLBACK-------------------------------
 
@@ -132,7 +133,7 @@ def main():
     #------------------------ TOMATO TRACKING --------------------
 
         # model prediction on single frame and conversion to supervision Detections
-        results = model1(frame, verbose=False)[0]
+        results = model1(frame, verbose=False, iou=0.7, agnostic_nms=True)[0]
         detections = sv.Detections.from_ultralytics(results)
 
         height, width, _ = frame.shape
@@ -174,14 +175,14 @@ def main():
                 "class_name": model1.model.names[class_id],
                 "confidence": confidence,
                 "frame_count": 1}#frame count keeps track how many times its been in frame for average confidence
-                tomato_history[tracker_id] = [class_id]#initializes tomato history dict
 
                 save_tomatoes(frame, detections, tracker_id) #saves tomato image only on the first frame of detection, labels as a
 
-            else:#if tomato with said ID already exists, sum the confidence and frame count over the frames its visible in.
-                all_tomatoes[tracker_id]["confidence"] += confidence #each frame adds confidence scores for a total
-                all_tomatoes[tracker_id]["frame_count"] += 1 #increases frame count to keep track of what to divide confidence by to find average
-                tomato_history[tracker_id].append(class_id) #adds current detection class to the list
+                tomato_history[tracker_id] = [class_id]  # initializes tomato history dict
+            else:  # if tomato with said ID already exists, sum the confidence and frame count over the frames its visible in.
+                all_tomatoes[tracker_id]["confidence"] += confidence  # each frame adds confidence scores for a total
+                all_tomatoes[tracker_id]["frame_count"] += 1  # increases frame count to keep track of what to divide confidence by to find average
+                tomato_history[tracker_id].append(class_id)  # adds current detection class to the list
 
         labels_1 = [
             f"#{tracker_id} {model1.model.names[class_id]} {confidence:0.2f}"
@@ -219,6 +220,7 @@ def main():
                     "confidence": confidence,
                     "frame_count": 1,
                     "appeared_at": round(len(frames_running)/60)}  # frame count keeps track how many times its been in frame for average confidence
+
             else:  # if disease with said ID already exists, sum the confidence and frame count over the frames its visible in.
                 all_diseases[tracker_id]["confidence"] += confidence  # each frame adds confidence scores for a total
                 all_diseases[tracker_id]["frame_count"] += 1  # increases frame count to keep track of what to divide confidence by to find average
@@ -247,15 +249,95 @@ def main():
         callback=callback
     )
 
-#----------------------- RIPENESS DETECTION ------------------------------------------------
+#----------------------- DUPLICATE REMOVAL ------------------------------------------------
+    old_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
 
-    # for i in range(len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))):  # for amount of images in DetectedTomatoes
-    #     image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
-    #     results3 = model3(image_path)
-    #     detection3 = sv.Detections.from_ultralytics(results3)
-    #     print(detection3.class_id)
+    #sets up counter for how many duplicate images were deleted
+    duplicate_images_count = 0
+    old_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
+
+    orb = cv2.ORB.create()
+
+    def remove_duplicates(image1, next_image, duplicate_images, i, j):
+        delete_image = False
+
+        pil_image1 = Image.fromarray(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
+        pil_next_image = Image.fromarray(cv2.cvtColor(next_image, cv2.COLOR_BGR2RGB))
+
+        hash1 = imagehash.phash(pil_image1)
+        hash2 = imagehash.phash(pil_next_image)
+
+        diff = hash1 - hash2
+
+        print(f"pHash difference between image {i + 1} and image {i + 1 + j} is: {diff}")
+
+        if diff <= 18:  # based on experiments, I havn't received a single 19, but every 18 result was the same
+            # code for saving images to folder for visual inspection of duplicates
+            # save_folder = os.path.join(os.getcwd(), 'tempPHASH')
+            # image1_save_path = os.path.join(save_folder, f"tomato_{i + 1}.png")
+            # next_image_save_path = os.path.join(save_folder, f"tomato_{i + 1 + j}.png")
+            #
+            # cv2.imwrite(image1_save_path, image1)
+            # cv2.imwrite(next_image_save_path, next_image)
+
+            duplicate_images += 1
+            delete_image = True
+
+        return duplicate_images, delete_image
+
+
+    # --------------------------------- comparison of image a to the next 10 id images to remove duplicate tomato detecions
+
+    for i in range(old_len_images):  # for amount of images in DetectedTomatoes
+        image_1_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
+        for j in range(1, 16):
+            next_image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1 + j}.png")
+            if os.path.exists(image_1_path) and os.path.exists(next_image_path):
+                image1 = cv2.imread(image_1_path)
+                next_image = cv2.imread(next_image_path)
+
+                duplicate_images_count, delete_image = remove_duplicates(image1, next_image, duplicate_images_count, i,
+                                                                         j)
+                if delete_image:
+                    os.remove(image_1_path)
+
+    new_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
+    print(f"Amount of images initially: {old_len_images}, Amount of images after cleaning: {new_len_images}, Duplicates removed: {duplicate_images_count}")
+
+    # finds the difference of items in both lists and maintains those which dont appear in list 2
+    # this obtains a list of tomato images which need to be deleted from all_tomatoes
+    new_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
+    image_list = [x for x in old_image_list if x not in new_image_list]
+
+    print(image_list)
+    print(all_tomatoes)
+
+    #remove from all_tomatoes id tracks found in the list
+    id_list = []
+    for item in image_list:
+        item = item.replace("tomato_", "")
+        item = item.replace(".png", "")
+        id_list.append(int(item))
+
+    #replaces all_tomatoes with itself only with items whos track number is not in id_list
+    #print(f"before: {len(all_tomatoes)}")
+    all_tomatoes = {k: v for k, v in all_tomatoes.items()if int(v['track_id']) not in id_list}
+    #print(f"after: {len(all_tomatoes)}")
+
 
 #----------------------- UPDATING CONFIDENCES AND INSERTING TO SQL ---------------------------
+
+    for track_id, tomato in all_tomatoes.items():  # track id correlates to the id of each tomato, tomatoes correlates to the data stored in all_tomatoes
+        majority_class_id = Counter(tomato_history[track_id]).most_common(1)[0][0]#finds most common appearing tomato class.
+        tomato["class_id"] = majority_class_id #sets the class id of that tomato as the most common one, a work around for class jittering
+        tomato["class_name"] = model1.model.names[int(majority_class_id)]
+        average_confidence = tomato["confidence"] / tomato["frame_count"]
+        tomato["confidence"] = average_confidence
+        if use_sql: #if sql tracking is enabled, the record of that tomato will be added
+            insert_statement = f"""INSERT INTO Tomatoes (ScanID, TomatoID, TomatoType, ConfidenceTomato)
+    VALUES ({current_scan_id}, {tomato["track_id"]}, '{tomato["class_name"]}', {tomato["confidence"]});"""
+            #print(insert_statement)
+            cursor.execute(insert_statement)
 
     for track_id, disease in all_diseases.items():
         average_confidence = disease["confidence"] / disease["frame_count"]
@@ -263,7 +345,7 @@ def main():
         if use_sql:
             insert_statement = f"""INSERT INTO Diseases (ScanID, DiseaseID, DiseaseType, ConfidenceDisease, SecondsIntoVideo)
     VALUES ({current_scan_id}, {disease["track_id"]}, '{disease["class_name"]}', {disease["confidence"]}, {disease["appeared_at"]});"""
-            print(insert_statement)
+            #print(insert_statement)
             cursor.execute(insert_statement)
 
     #commits all changes made to database and closes the cursor
@@ -271,6 +353,7 @@ def main():
         connection.commit()
 
 main()
+
 
 #
 #     #--------------------- Create dict of  classes TOMATO ----------------------
