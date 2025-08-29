@@ -7,6 +7,9 @@ from collections import Counter
 import cv2
 from PIL import Image
 import imagehash
+import time
+import matplotlib.pyplot as plt
+import pandas as pd
 
 use_sql = True
 #for examiner purposes if they do not wish to set up sql workbench and its relevant database info when running the code
@@ -35,6 +38,7 @@ def sql_connect():
 
 def main():
 
+    start = time.time()
     #wipes last runs tomato images
     tomato_folder = os.path.join(os.getcwd(), "DetectedTomatoes")
     for image in os.listdir(tomato_folder): #for each image in tomatofolder
@@ -84,23 +88,23 @@ def main():
     # settings
     #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
     SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/Detector.mp4" #save output
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/DefaultBytetrack.mp4" #save output
 
     # create BYTETracker instance for tomato
     byte_tracker1 = sv.ByteTrack(
         track_activation_threshold=0.25, #confidence needed to start tracking
-        lost_track_buffer=90, #for how many frames to keep including lost tracks after dissapearance, match with fps, Good for tracks that dissapear.
+        lost_track_buffer=45, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50% Good for tracks that dissapear.
         minimum_matching_threshold=0.70,
-        frame_rate=60, #frame rate of tracker to match 60fps of vide
+        frame_rate=30, #frame rate of tracker to match 60fps of vide
         minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
     )
     byte_tracker1.reset()
 
     byte_tracker2 = sv.ByteTrack(
         track_activation_threshold=0.70, #confidence needed to start tracking
-        lost_track_buffer=60, #for how many frames to keep including lost tracks after dissapearance, match with fps, Good for tracks that dissapear.
+        lost_track_buffer=45, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50%, Good for tracks that dissapear.
         minimum_matching_threshold=0.40,
-        frame_rate=60, #frame rate of tracker to match 60fps of vide
+        frame_rate=30, #frame rate of tracker to match 60fps of vide
         minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
     )
     byte_tracker2.reset()
@@ -219,7 +223,7 @@ def main():
                     "class_name": model2.model.names[class_id],
                     "confidence": confidence,
                     "frame_count": 1,
-                    "appeared_at": round(len(frames_running)/60)}  # frame count keeps track how many times its been in frame for average confidence
+                    "appeared_at": round(len(frames_running)/30)}  # frame count keeps track how many times its been in frame for average confidence
 
             else:  # if disease with said ID already exists, sum the confidence and frame count over the frames its visible in.
                 all_diseases[tracker_id]["confidence"] += confidence  # each frame adds confidence scores for a total
@@ -286,7 +290,7 @@ def main():
         return duplicate_images, delete_image
 
 
-    # --------------------------------- comparison of image a to the next 10 id images to remove duplicate tomato detecions
+    # --------------------------------- comparison of image a to b the next 10 id images to remove duplicate tomato detecions
 
     for i in range(old_len_images):  # for amount of images in DetectedTomatoes
         image_1_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
@@ -352,8 +356,48 @@ def main():
     if use_sql:
         connection.commit()
 
-main()
+        #visualises past data.
+        select_statement = f"""SELECT ScanID, ScanDate, TomatoType, COUNT(TomatoType) as Counts FROM Tomatoes GROUP BY ScanID, TomatoType, ScanDate ORDER BY ScanID;"""
+        df = pd.read_sql_query(select_statement, connection)
 
+        # scan_ids = []
+        # scan_dates = []
+        # types = []
+        # counts = []
+        #
+        # for row in select_results:
+        #     scan_ids.append(row[0])
+        #     scan_dates.append(row[1])
+        #     types.append(row[2])
+        #     counts.append(row[3])
+
+        # print(select_results[:5])
+        # print(len(select_results[0]))
+
+        # df = pd.DataFrame(select_results, columns=["ScanID", "ScanDate", "TomatoType", "Counts"])
+        df["TomatoType"] = df["TomatoType"].fillna("None")#just in case no tomatoes are detected in a run
+        df["ScanDate"] = pd.to_datetime(df["ScanDate"])
+
+        tomato_types = df["TomatoType"].unique()
+
+        plt.figure(figsize=(10, 10))
+
+        for tomato_type in tomato_types:
+            subset = df[df["TomatoType"] == tomato_type]
+            plt.plot(subset["ScanDate"], subset["Counts"], marker='o', label=tomato_type)
+
+        plt.xlabel("Scan Date")
+        plt.ylabel("Tomato Count")
+        plt.title("Tomato Counts Over Time By Ripeness")
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+    end = time.time()
+    print(f"Time taken: {end - start:.4f} seconds")
+
+main()
 
 #
 #     #--------------------- Create dict of  classes TOMATO ----------------------
