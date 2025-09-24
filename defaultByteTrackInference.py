@@ -61,7 +61,7 @@ def main():
     cwd = os.getcwd()
 
     # get and load the tomato model
-    desired_model_1 = 'v11' #baseline v8640 v8  v11 v12 v11AHG v12AHG
+    desired_model_1 = 'v12' #v8, v11, v12
     model_path_1 = os.path.join(cwd, 'FinalModels', f'{desired_model_1}', 'best.pt')
     model1 = YOLO(model_path_1)
 
@@ -86,16 +86,15 @@ def main():
     # settings
     #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
     SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/other.mp4" #save output
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/v12BTImproved.mp4" #save output
 
     frame_rate = 30
-    ltb = round(frame_rate * 1.5)
-
+    lost_track_buffer = round(frame_rate * 1.5)
     # create BYTETracker instance for tomato
     byte_tracker1 = sv.ByteTrack(
         track_activation_threshold=0.33, #confidence needed to start tracking
-        lost_track_buffer=ltb, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50% Good for tracks that dissapear.
-        minimum_matching_threshold=0.70,
+        lost_track_buffer=lost_track_buffer, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50% Good for tracks that dissapear.
+        minimum_matching_threshold=0.7,
         frame_rate=frame_rate, #frame rate of tracker to match 60fps of vide
         minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
     )
@@ -103,8 +102,8 @@ def main():
 
     byte_tracker2 = sv.ByteTrack(
         track_activation_threshold=0.90, #confidence needed to start tracking
-        lost_track_buffer=ltb, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50%, Good for tracks that dissapear.
-        minimum_matching_threshold=0.70,
+        lost_track_buffer=lost_track_buffer, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50%, Good for tracks that dissapear.
+        minimum_matching_threshold=0.5,
         frame_rate=frame_rate, #frame rate of tracker to match 60fps of vide
         minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
     )
@@ -127,13 +126,13 @@ def main():
 
     all_tomatoes = {}
     all_diseases = {}
+    #frames_running = []
     tomato_history = {}  # a dictionary to keep track of the mode ripeness.
 
 #-------------------------CALLBACK-------------------------------
     mot_results = []
-
     # define callback function to be used in video processing
-    def callback(frame: np.ndarray, index: int,) -> np.ndarray:
+    def callback(frame: np.ndarray, index: int,) -> np.ndarray:#index keeps track of current frame
         if index % 60 == 0:
             print(index//60)
         annotated_frame = frame.copy()
@@ -187,7 +186,7 @@ def main():
                 "class_id": class_id,
                 "class_name": model1.model.names[class_id],
                 "confidence": confidence,
-                "frame_count": 1, #frame count keeps track how many times its been in frame for average confidence
+                "frame_count": 1,#frame count keeps track how many times its been in frame for average confidence
                 "appeared_at": round(index / frame_rate)}
 
                 save_tomatoes(frame, detections, tracker_id) #saves tomato image only on the first frame of detection, labels as a
@@ -272,69 +271,69 @@ def main():
     print("Saved MOT results to TomatoesMixedTRIM.txt")
 
 #----------------------- DUPLICATE REMOVAL ------------------------------------------------
-    old_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
-
-    #sets up counter for how many duplicate images were deleted
-    duplicate_images_count = 0
-    old_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
-
-    def remove_duplicates(image1, next_image, duplicate_images, i, j):
-        delete_image = False
-
-        pil_image1 = Image.fromarray(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
-        pil_next_image = Image.fromarray(cv2.cvtColor(next_image, cv2.COLOR_BGR2RGB))
-
-        hash1 = imagehash.phash(pil_image1)
-        hash2 = imagehash.phash(pil_next_image)
-
-        diff = hash1 - hash2
-
-        print(f"pHash difference between image {i + 1} and image {i + 1 + j} is: {diff}")
-
-        if diff <= 18:  # based on experiments, I havn't received a single 19, but every 18 result was the same
-            duplicate_images += 1
-            delete_image = True
-
-        return duplicate_images, delete_image
-
+    # old_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
+    #
+    # #sets up counter for how many duplicate images were deleted
+    # duplicate_images_count = 0
+    # old_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
+    #
+    # def remove_duplicates(image1, next_image, duplicate_images, i, j):
+    #     delete_image = False
+    #
+    #     pil_image1 = Image.fromarray(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))
+    #     pil_next_image = Image.fromarray(cv2.cvtColor(next_image, cv2.COLOR_BGR2RGB))
+    #
+    #     hash1 = imagehash.phash(pil_image1)
+    #     hash2 = imagehash.phash(pil_next_image)
+    #
+    #     diff = hash1 - hash2
+    #
+    #     print(f"pHash difference between image {i + 1} and image {i + 1 + j} is: {diff}")
+    #
+    #     if diff <= 18:  # based on experiments, I havn't received a single 19, but every 18 result was the same
+    #         duplicate_images += 1
+    #         delete_image = True
+    #
+    #     return duplicate_images, delete_image
+    #
 
     # --------------------------------- comparison of image a to b the next 10 id images to remove duplicate tomato detecions
 
-    for i in range(old_len_images):  # for amount of images in DetectedTomatoes
-        image_1_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
-        for j in range(1, 16):
-            next_image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1 + j}.png")
-            if os.path.exists(image_1_path) and os.path.exists(next_image_path):
-                image1 = cv2.imread(image_1_path)
-                next_image = cv2.imread(next_image_path)
-
-                duplicate_images_count, delete_image = remove_duplicates(image1, next_image, duplicate_images_count, i,
-                                                                         j)
-                if delete_image:
-                    os.remove(image_1_path)
-
-    new_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
-    print(f"Amount of images initially: {old_len_images}, Amount of images after cleaning: {new_len_images}, Duplicates removed: {duplicate_images_count}")
-
-    # finds the difference of items in both lists and maintains those which dont appear in list 2
-    # this obtains a list of tomato images which need to be deleted from all_tomatoes
-    new_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
-    image_list = [x for x in old_image_list if x not in new_image_list]
-
-    print(image_list)
-    print(all_tomatoes)
-
-    #remove from all_tomatoes id tracks found in the list
-    id_list = []
-    for item in image_list:
-        item = item.replace("tomato_", "")
-        item = item.replace(".png", "")
-        id_list.append(int(item))
-
-    #replaces all_tomatoes with itself only with items whos track number is not in id_list
-    #print(f"before: {len(all_tomatoes)}")
-    all_tomatoes = {k: v for k, v in all_tomatoes.items()if int(v['track_id']) not in id_list}
-    #print(f"after: {len(all_tomatoes)}")
+    # for i in range(old_len_images):  # for amount of images in DetectedTomatoes
+    #     image_1_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1}.png")
+    #     for j in range(1, 16):
+    #         next_image_path = os.path.join(os.getcwd(), "DetectedTomatoes", f"tomato_{i + 1 + j}.png")
+    #         if os.path.exists(image_1_path) and os.path.exists(next_image_path):
+    #             image1 = cv2.imread(image_1_path)
+    #             next_image = cv2.imread(next_image_path)
+    #
+    #             duplicate_images_count, delete_image = remove_duplicates(image1, next_image, duplicate_images_count, i,
+    #                                                                      j)
+    #             if delete_image:
+    #                 os.remove(image_1_path)
+    #
+    # new_len_images = len(os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes")))
+    # print(f"Amount of images initially: {old_len_images}, Amount of images after cleaning: {new_len_images}, Duplicates removed: {duplicate_images_count}")
+    #
+    # # finds the difference of items in both lists and maintains those which dont appear in list 2
+    # # this obtains a list of tomato images which need to be deleted from all_tomatoes
+    # new_image_list = os.listdir(os.path.join(os.getcwd(), "DetectedTomatoes"))
+    # image_list = [x for x in old_image_list if x not in new_image_list]
+    #
+    # print(image_list)
+    # print(all_tomatoes)
+    #
+    # #remove from all_tomatoes id tracks found in the list
+    # id_list = []
+    # for item in image_list:
+    #     item = item.replace("tomato_", "")
+    #     item = item.replace(".png", "")
+    #     id_list.append(int(item))
+    #
+    # #replaces all_tomatoes with itself only with items whos track number is not in id_list
+    # #print(f"before: {len(all_tomatoes)}")
+    # all_tomatoes = {k: v for k, v in all_tomatoes.items()if int(v['track_id']) not in id_list}
+    # #print(f"after: {len(all_tomatoes)}")
 
 
 #----------------------- UPDATING CONFIDENCES AND INSERTING TO SQL ---------------------------
@@ -418,9 +417,9 @@ def main():
         gt_df['class'] = gt_df['class'].map(flip_map)
         result_df_stripped = result_df.copy()
 
-        for idx, row in result_df_stripped.iterrows():
-            if row["Id"] in id_list:
-                result_df_stripped.drop(idx, inplace=True)
+        # for idx, row in result_df_stripped.iterrows():
+        #     if row["Id"] in id_list:
+        #         result_df_stripped.drop(idx, inplace=True)
 
         # renames columns and sets a multi index for motmetrics format
         gt_mm = gt_df.set_index(['FrameId', 'Id'])[['X', 'Y', 'Width', 'Height']]
@@ -452,16 +451,15 @@ def main():
         class_name = model1.model.names[class_id]
         print(f"{class_name}: {count}")
 
-    #establishes different clip times
+    #added for ease of reading numnbers from 5 different spliced clips when filling out results of paper
     thresholds = {
-        "clip 1": (0, (8 * 60) - 1),
-        "clip 2": (8 * 60, (18 * 60) - 1),
-        "clip 3": (18 * 60, (26 * 60) - 1),
-        "clip 4": (26 * 60, (35 * 60) - 1),
+        "clip 1": (0, (8*60)-1),
+        "clip 2": (8*60, (18*60)-1),
+        "clip 3": (18*60, (26*60)-1),
+        "clip 4": (26*60, (35*60)-1),
         "clip 5": (35 * 60, 44 * 60)
     }
 
-    #for each clip,  saves the counts of tomatoes by class when they appeare between time a and time b
     counts_per_clip = {label: 0 for label in thresholds}
     for tomato in all_tomatoes.values():
         appeared_at = tomato["appeared_at"] * 30
@@ -470,7 +468,6 @@ def main():
                 counts_per_clip[label] += 1
                 break
 
-    #displays counts
     for label, count in counts_per_clip.items():
         print(f"{label}: {count}")
 

@@ -1,10 +1,19 @@
 train:
+train:
   agg_func: median #sum, max, mean, median
   epochs: 120
   weighted_dataset: True
   image_size: 1024
   yolo: 12
   train_tomato: True #True for tomato, false for disease
+  dropout: 0.15 #stronger dropout
+  minimum_epochs: 100 #custom additon made to YOLO's trainer.py to allow minimum training epochs
+  patience: 3
+  lr0: 0.001 #initial learning rate, 0.001 needed for AdamW, reduced to prevent overfitting. All previois experience dictates lowerd learning rate with L2 always ahd the best effects on overfitting
+  lrf: 0.00001 #final learning rate
+  weight_decay: 0.00075 #slightly stronger weight decay
+  workers: 4
+  device: 0
 
 augmentations:
   seed: 42

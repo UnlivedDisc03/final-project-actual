@@ -12,6 +12,14 @@ class Config:
             self.image_size = configs['train']['image_size']
             self.yolo = configs['train']['yolo']
             self.train_tomato = configs['train']['train_tomato']
+            self.dropout = configs['train']['dropout']
+            self.minimum_epochs = configs['train']['minimum_epochs']
+            self.patience = configs['train']['patience']
+            self.lr0 = configs['train']['lr0']
+            self.lrf = configs['train']['lrf']
+            self.weight_decay = configs['train']['weight_decay']
+            self.workers = configs['train']['workers']
+            self.device = configs['train']['device']
 
             #augmentation settings
             self.seed = configs['augmentations']['seed']
