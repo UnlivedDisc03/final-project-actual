@@ -61,13 +61,14 @@ def main():
     cwd = os.getcwd()
 
     # get and load the tomato model
-    desired_model_1 = 'v11' #baseline v8640 v8  v11 v12 v11AHG v12AHG
+    desired_model_1 = 'v12' #baseline v8640 v8  v11 v12 v11AHG v12AHG
     model_path_1 = os.path.join(cwd, 'FinalModels', f'{desired_model_1}', 'best.pt')
     model1 = YOLO(model_path_1)
 
     #get and load second model (DISEASE DETECTION)
     desired_model_2 = 15  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
     model_path_2 = os.path.join(cwd, 'Disease Training Output', f'train{desired_model_2}', 'weights', 'best.pt')
+    #model_path_2 = os.path.join(cwd, 'FinalModels', f'{desired_model_2}', 'best.pt')
     model2 = YOLO(model_path_2)
 
     #takes class names of model, chooses which ones to use (omits healthy leaf detection)
@@ -84,9 +85,9 @@ def main():
     #---------------------------------------- Video selection and ByteTracker formulation -----------------------------
 
     # settings
-    #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
-    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/other.mp4" #save output
+    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input disease
+    #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixedTRIM.mp4") #input just tomato
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/v12.mp4" #save output
 
     frame_rate = 30
     ltb = round(frame_rate * 1.5)
@@ -102,11 +103,11 @@ def main():
     byte_tracker1.reset()
 
     byte_tracker2 = sv.ByteTrack(
-        track_activation_threshold=0.90, #confidence needed to start tracking
+        track_activation_threshold=0.7, #confidence needed to start tracking
         lost_track_buffer=ltb, #for how many frames to keep including lost tracks after dissapearance, match with fps + 50%, Good for tracks that dissapear.
-        minimum_matching_threshold=0.70,
+        minimum_matching_threshold=0.7,
         frame_rate=frame_rate, #frame rate of tracker to match 60fps of vide
-        minimum_consecutive_frames=4 #minimum amount of frames a track must exist for to be val
+        minimum_consecutive_frames=1 #minimum amount of frames a track must exist for to be val
     )
     byte_tracker2.reset()
 
@@ -131,11 +132,18 @@ def main():
 
 #-------------------------CALLBACK-------------------------------
     mot_results = []
+    times_list = []
+    last = time.time()
 
     # define callback function to be used in video processing
     def callback(frame: np.ndarray, index: int,) -> np.ndarray:
+        nonlocal last #allows last to pass into callback
         if index % 60 == 0:
-            print(index//60)
+            current = time.time()
+            running = current - last
+            print(f"Time taken for second {index//60} of video inference: {running:.4f}")
+            last = current
+            times_list.append(running)
         annotated_frame = frame.copy()
 
     #------------------------ TOMATO TRACKING --------------------
@@ -177,8 +185,8 @@ def main():
                 cv2.imwrite(filename, crop) #saves image
 
         #Extracts valuable info from each track id (each tracked tomato) which I can use to store on the database for insights.
-        for confidence, class_id, tracker_id in zip(detections.confidence, detections.class_id, detections.tracker_id): #zip combines 3 lists into one for easier accessing
-            x1, y1, x2, y2 = detections.xyxy[0]
+        for confidence, class_id, tracker_id, box in zip(detections.confidence, detections.class_id, detections.tracker_id, detections.xyxy): #zip combines 3 lists into one for easier accessing
+            x1, y1, x2, y2 = map(int,box)
             w, h = x2 - x1, y2 - y1
             mot_results.append(f"{index + 1},{tracker_id},{x1},{y1},{w},{h},{confidence:.2f},{class_id+1},1.0\n")#frame, track id, x, y, w, h, confidence for MOT analysis
             if tracker_id not in all_tomatoes: #if the tomato with a specific id isnt already in the dictionary, add it
@@ -214,14 +222,14 @@ def main():
     #-------------------- DISEASE TRACKING --------------------------
 
         # model prediction on single frame and conversion to supervision Detections
-        results2 = model2(frame, verbose=False)[0]
+        results2 = model2(frame, verbose=False, iou=0.7, agnostic_nms=True)[0]
         detections2 = sv.Detections.from_ultralytics(results2)
 
         #strips detections off of healthy leaves
         detections2 = detections2[np.isin(detections2.class_id, SELECTED_CLASS_IDS_2)]
 
-        mask2 = [inside_region(box, region_of_interest) for box in detections2.xyxy]
-        detections2 = detections2[mask2]
+        #mask2 = [inside_region(box, region_of_interest) for box in detections2.xyxy]
+        #detections2 = detections2[mask2]
 
         # only consider class id from selected_classes defined above
         # tracking detections
@@ -476,6 +484,9 @@ def main():
 
     end = time.time()
     print(f"Time taken: {end - start:.4f} seconds")
+
+    average_time = sum(times_list) / len(times_list)
+    print(f"Average inference time per 1 second of video: {average_time:.4f} seconds")
 
 
 
