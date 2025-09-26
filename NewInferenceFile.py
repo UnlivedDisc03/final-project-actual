@@ -71,6 +71,12 @@ def main():
     #model_path_2 = os.path.join(cwd, 'FinalModels', f'{desired_model_2}', 'best.pt')
     model2 = YOLO(model_path_2)
 
+    model1 = model1.to("cuda")
+    model2 = model2.to("cuda")
+    print(model1.device)
+    print(model2.device)
+
+
     #takes class names of model, chooses which ones to use (omits healthy leaf detection)
     CLASS_NAMES_DICT_2 = model2.model.names
     SELECTED_CLASS_NAMES_2 = [
@@ -149,7 +155,7 @@ def main():
     #------------------------ TOMATO TRACKING --------------------
 
         # model prediction on single frame and conversion to supervision Detections
-        results = model1(frame, verbose=False, iou=0.7, agnostic_nms=True)[0]
+        results = model1(frame, verbose=False, iou=0.7, agnostic_nms=True, device=0)[0]
         detections = sv.Detections.from_ultralytics(results)
 
         #establish region of interest
@@ -222,7 +228,7 @@ def main():
     #-------------------- DISEASE TRACKING --------------------------
 
         # model prediction on single frame and conversion to supervision Detections
-        results2 = model2(frame, verbose=False, iou=0.7, agnostic_nms=True)[0]
+        results2 = model2(frame, verbose=False, iou=0.7, agnostic_nms=True, device=0)[0]
         detections2 = sv.Detections.from_ultralytics(results2)
 
         #strips detections off of healthy leaves
