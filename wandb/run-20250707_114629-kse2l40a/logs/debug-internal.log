@@ -1,0 +1,16 @@
+{"time":"2025-07-07T11:46:29.5276419+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250707_114629-kse2l40a\\logs\\debug-core.log"}
+{"time":"2025-07-07T11:46:29.7889881+01:00","level":"INFO","msg":"stream: created new stream","id":"kse2l40a"}
+{"time":"2025-07-07T11:46:29.7889881+01:00","level":"INFO","msg":"stream: started","id":"kse2l40a"}
+{"time":"2025-07-07T11:46:29.7889881+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:46:29.7889881+01:00","level":"INFO","msg":"sender: started","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:46:29.7889881+01:00","level":"INFO","msg":"handler: started","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:46:30.0088956+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-07T11:53:28.4813416+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-07T11:53:28.4818592+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-07T11:53:29.5022539+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_kse2l40a_model","runtime_seconds":1.9966118000000002,"subtasks":[{"desc":"best.pt","runtime_seconds":1.3566619,"progress":"5.9MB/5.9MB"}]},{"desc":"uploading artifact run-kse2l40a-curvesF1-ConfidenceB_table-0ef4f150efb58af0f8d961b384508037","runtime_seconds":1.5056988},{"desc":"uploading artifact run-kse2l40a-curvesPrecision-ConfidenceB_table-6260160b40fc75571e21038bd32fd8ab","runtime_seconds":1.2648748},{"desc":"uploading artifact run-kse2l40a-curvesRecall-ConfidenceB_table-d46d494445c9ada63b2621caaff7f736","runtime_seconds":1.0418389,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.1860908,"progress":"21.4KB/21.4KB"}]}],"total_operations":4}}
+{"time":"2025-07-07T11:53:30.3118122+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-07T11:53:30.503011+01:00","level":"INFO","msg":"stream: closing","id":"kse2l40a"}
+{"time":"2025-07-07T11:53:30.503011+01:00","level":"INFO","msg":"handler: closed","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:53:30.503011+01:00","level":"INFO","msg":"sender: closed","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:53:30.503011+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kse2l40a"}
+{"time":"2025-07-07T11:53:30.5035654+01:00","level":"INFO","msg":"stream: closed","id":"kse2l40a"}

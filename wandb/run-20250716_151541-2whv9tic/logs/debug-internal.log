@@ -1,0 +1,14 @@
+{"time":"2025-07-16T15:15:41.394475+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-16T15:15:41.7103881+01:00","level":"INFO","msg":"stream: created new stream","id":"2whv9tic"}
+{"time":"2025-07-16T15:15:41.7103881+01:00","level":"INFO","msg":"stream: started","id":"2whv9tic"}
+{"time":"2025-07-16T15:15:41.7103881+01:00","level":"INFO","msg":"sender: started","stream_id":"2whv9tic"}
+{"time":"2025-07-16T15:15:41.7103881+01:00","level":"INFO","msg":"handler: started","stream_id":"2whv9tic"}
+{"time":"2025-07-16T15:15:41.7103881+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"2whv9tic"}
+{"time":"2025-07-16T19:52:57.6939852+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/unliveddisc03-city-university-of-london/Final%20Individual%20Project/2whv9tic/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-07-16T21:34:27.7127896+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_2whv9tic_model","runtime_seconds":2.29548,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5206317999999999,"progress":"3.6MB/6.0MB"}]},{"desc":"uploading artifact run-2whv9tic-curvesPrecision-RecallB_table-ae064ee51e43a15f038b587fa8185cb3","runtime_seconds":2.0117797},{"desc":"uploading artifact run-2whv9tic-curvesF1-ConfidenceB_table-b2c000409d5898256fc6bda08d1d7223","runtime_seconds":1.6878492},{"desc":"uploading artifact run-2whv9tic-curvesPrecision-ConfidenceB_table-cad6dd68dc882dd8a8e772fe9a6f0696","runtime_seconds":1.37226},{"desc":"uploading artifact run-2whv9tic-curvesRecall-ConfidenceB_table-73b8f25fed6dae7479d60c43c39a2a76","runtime_seconds":1.0319274,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.2926744,"progress":"30.2KB/30.2KB"}]}],"total_operations":5}}
+{"time":"2025-07-16T21:34:29.7699664+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-16T21:34:30.0308809+01:00","level":"INFO","msg":"stream: closing","id":"2whv9tic"}
+{"time":"2025-07-16T21:34:30.0308809+01:00","level":"INFO","msg":"handler: closed","stream_id":"2whv9tic"}
+{"time":"2025-07-16T21:34:30.0308809+01:00","level":"INFO","msg":"sender: closed","stream_id":"2whv9tic"}
+{"time":"2025-07-16T21:34:30.0308809+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"2whv9tic"}
+{"time":"2025-07-16T21:34:30.0314259+01:00","level":"INFO","msg":"stream: closed","id":"2whv9tic"}

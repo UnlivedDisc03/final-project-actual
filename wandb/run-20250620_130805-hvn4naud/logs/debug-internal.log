@@ -1,0 +1,16 @@
+{"time":"2025-06-20T13:08:05.9693633+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250620_130805-hvn4naud\\logs\\debug-core.log"}
+{"time":"2025-06-20T13:08:06.3031806+01:00","level":"INFO","msg":"stream: created new stream","id":"hvn4naud"}
+{"time":"2025-06-20T13:08:06.3031806+01:00","level":"INFO","msg":"stream: started","id":"hvn4naud"}
+{"time":"2025-06-20T13:08:06.3031806+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:08:06.3031806+01:00","level":"INFO","msg":"sender: started","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:08:06.303692+01:00","level":"INFO","msg":"handler: started","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:08:07.371454+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-20T13:11:41.3373037+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-20T13:11:41.3373037+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-20T13:11:42.3449518+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading media\\images\\val_batch0_labels_3_f177d94031cc2c2d5e0a.jpg","runtime_seconds":5.5974596,"progress":"176.0KB/736.2KB"},{"desc":"uploading media\\images\\val_batch0_pred_3_553c574e48c51f1defbe.jpg","runtime_seconds":5.5974596,"progress":"176.0KB/724.4KB"},{"desc":"uploading media\\images\\val_batch1_pred_3_ef2f9e3557c86d5a6045.jpg","runtime_seconds":5.5974596,"progress":"208.0KB/631.2KB"},{"desc":"uploading media\\images\\val_batch1_labels_3_2a3314a7e3c8ea1f9ad9.jpg","runtime_seconds":5.5974596,"progress":"160.0KB/669.8KB"},{"desc":"uploading media\\images\\confusion_matrix_normalized_3_528bea347c6401b94bc1.png","runtime_seconds":5.5676551,"progress":"64.0KB/207.1KB"},{"desc":"uploading media\\images\\F1_curve_3_d2c06072baa69633e1fb.png","runtime_seconds":5.5676551,"progress":"96.0KB/240.1KB"},{"desc":"uploading media\\images\\PR_curve_3_f44a7bec218ef55fa641.png","runtime_seconds":5.5676551,"progress":"112.0KB/234.4KB"},{"desc":"uploading media\\images\\val_batch2_labels_3_c5c7d5e7b8f422dbd051.jpg","runtime_seconds":5.5676551,"progress":"128.0KB/684.0KB"},{"desc":"uploading media\\images\\P_curve_3_27c106f4c4eef88e8c6a.png","runtime_seconds":5.5676551,"progress":"48.0KB/266.6KB"},{"desc":"uploading media\\images\\val_batch2_pred_3_e40399235143a6b7ad96.jpg","runtime_seconds":5.5676551,"progress":"48.0KB/668.2KB"}],"total_operations":25}}
+{"time":"2025-06-20T13:11:54.106228+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-20T13:11:54.3394648+01:00","level":"INFO","msg":"stream: closing","id":"hvn4naud"}
+{"time":"2025-06-20T13:11:54.3394648+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:11:54.3394648+01:00","level":"INFO","msg":"sender: closed","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:11:54.3394648+01:00","level":"INFO","msg":"handler: closed","stream_id":"hvn4naud"}
+{"time":"2025-06-20T13:11:54.3394648+01:00","level":"INFO","msg":"stream: closed","id":"hvn4naud"}

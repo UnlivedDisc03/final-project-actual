@@ -1,0 +1,61 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            otyk5xp1lgiwn3wxkpu2dqa704sd0yyt:
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "214748360704"
+                        used: "214561361920"
+                email: UnlivedDisc03@gmail.com
+                executable: C:\Users\Unliv\PycharmProjects\pythonProject\.venv\Scripts\python.exe
+                git:
+                    commit: 33c16b85f37d2e807224f1653d19e7709d8ca31f
+                    remote: https://github.com/UnlivedDisc03/final-project-actual
+                gpu: NVIDIA GeForce GTX 1650 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 1024
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce GTX 1650 Ti
+                      uuid: GPU-995cbeaf-e18e-6bd3-44db-08596f0ce625
+                host: DESKTOP-JBEA1UO
+                memory:
+                    total: "33685716992"
+                os: Windows-10-10.0.19045-SP0
+                program: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py
+                python: CPython 3.10.11
+                root: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone
+                startedAt: "2025-07-04T13:31:37.426495Z"
+                writerId: otyk5xp1lgiwn3wxkpu2dqa704sd0yyt
+        m: []
+        python_version: 3.10.11
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 13
+                - 16
+            "4": 3.10.11
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+train:
+    value:
+        agg_func: median
+        epochs: 10
+        image_size: 640
+        weighted_dataset: true
+        yolo: 8

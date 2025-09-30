@@ -1,0 +1,22 @@
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_setup.py:_flush():80] Current SDK version is 0.21.0
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_setup.py:_flush():80] Configure stats pid to 10024
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_setup.py:_flush():80] Loading settings from C:\Users\Unliv\.config\wandb\settings
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_setup.py:_flush():80] Loading settings from C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\settings
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-08-07 11:39:20,661 INFO    MainThread:10024 [wandb_init.py:setup_run_log_directory():703] Logging user logs to C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\run-20250807_113920-7ybzi1ib\logs\debug.log
+2025-08-07 11:39:20,668 INFO    MainThread:10024 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\run-20250807_113920-7ybzi1ib\logs\debug-internal.log
+2025-08-07 11:39:20,669 INFO    MainThread:10024 [wandb_init.py:init():830] calling init triggers
+2025-08-07 11:39:20,669 INFO    MainThread:10024 [wandb_init.py:init():835] wandb.init called with sweep_config: {}
+config: {'train': {'agg_func': 'median', 'epochs': 120, 'weighted_dataset': True, 'image_size': 640, 'yolo': 8, 'train_tomato': True}, 'augmentations': {'seed': 42, 'degrees': 10, 'translate': 0.2, 'scale': 0.25, 'shear': 0.25, 'perspective': 5e-05, 'fliplr': 0.5, 'mosaic': 0.33, 'erasing': 0.5, 'hsv_h': 0.0, 'hsv_s': 0.0, 'hsv_v': 0.1}, '_wandb': {}}
+2025-08-07 11:39:20,669 INFO    MainThread:10024 [wandb_init.py:init():871] starting backend
+2025-08-07 11:39:20,885 INFO    MainThread:10024 [wandb_init.py:init():874] sending inform_init request
+2025-08-07 11:39:20,929 INFO    MainThread:10024 [wandb_init.py:init():882] backend started and connected
+2025-08-07 11:39:20,930 INFO    MainThread:10024 [wandb_init.py:init():953] updated telemetry
+2025-08-07 11:39:20,971 INFO    MainThread:10024 [wandb_init.py:init():977] communicating run to backend with 90.0 second timeout
+2025-08-07 11:39:21,513 INFO    MainThread:10024 [wandb_init.py:init():1029] starting run threads in backend
+2025-08-07 11:39:21,647 INFO    MainThread:10024 [wandb_run.py:_console_start():2458] atexit reg
+2025-08-07 11:39:21,647 INFO    MainThread:10024 [wandb_run.py:_redirect():2306] redirect: wrap_raw
+2025-08-07 11:39:21,647 INFO    MainThread:10024 [wandb_run.py:_redirect():2375] Wrapping output streams.
+2025-08-07 11:39:21,647 INFO    MainThread:10024 [wandb_run.py:_redirect():2398] Redirects installed.
+2025-08-07 11:39:21,655 INFO    MainThread:10024 [wandb_init.py:init():1075] run started, returning control to user process
+2025-08-07 11:50:36,212 INFO    MsgRouterThr:10024 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

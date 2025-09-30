@@ -1,0 +1,30 @@
+Dataset File Updated.
+Selected weighted dataset
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 74, in <module>
+    training()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 26, in training
+    model = YOLO("yolov8n.pt", task="detect")
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\ultralytics\models\yolo\model.py", line 79, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\ultralytics\engine\model.py", line 151, in __init__
+    self._load(model, task=task)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\ultralytics\engine\model.py", line 295, in _load
+    self.model, self.ckpt = attempt_load_one_weight(weights)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\ultralytics\nn\tasks.py", line 1550, in attempt_load_one_weight
+    model = (ckpt.get("ema") or ckpt["model"]).to(device).float()  # FP32 model
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 1158, in float
+    return self._apply(lambda t: t.float() if t.is_floating_point() else t)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\ultralytics\nn\tasks.py", line 289, in _apply
+    self = super()._apply(fn)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "C:\Users\Unliv\PycharmProjects\pythonProject\.venv\lib\site-packages\torch\nn\modules\module.py", line 1158, in <lambda>
+    return self._apply(lambda t: t.float() if t.is_floating_point() else t)
+RuntimeError: [enforce fail at alloc_cpu.cpp:116] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1179648 bytes.

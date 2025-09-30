@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 62, in <module>
+    training()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 29, in training
+    data=dataset.dataset_path,
+         ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Dataset' object has no attribute 'dataset_path'

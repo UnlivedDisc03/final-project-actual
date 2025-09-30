@@ -1,0 +1,16 @@
+{"time":"2025-06-30T13:31:31.9798605+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250630_133131-5dnoc190\\logs\\debug-core.log"}
+{"time":"2025-06-30T13:31:32.468873+01:00","level":"INFO","msg":"stream: created new stream","id":"5dnoc190"}
+{"time":"2025-06-30T13:31:32.468873+01:00","level":"INFO","msg":"stream: started","id":"5dnoc190"}
+{"time":"2025-06-30T13:31:32.468873+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:31:32.468873+01:00","level":"INFO","msg":"sender: started","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:31:32.468873+01:00","level":"INFO","msg":"handler: started","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:31:32.7026945+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-30T13:39:13.3635859+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-30T13:39:13.3635859+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-30T13:39:14.3795858+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_5dnoc190_model","runtime_seconds":2.3384972,"subtasks":[{"desc":"best.pt","runtime_seconds":1.6812721000000002,"progress":"3.5MB/5.9MB"}]},{"desc":"uploading artifact run-5dnoc190-curvesPrecision-RecallB_table-ea748a3eeef2f640bfe381800292d89c","runtime_seconds":2.0314278},{"desc":"uploading artifact run-5dnoc190-curvesF1-ConfidenceB_table-49b23bcf4bb8840de4921f24ec5c3c99","runtime_seconds":1.7608784},{"desc":"uploading artifact run-5dnoc190-curvesPrecision-ConfidenceB_table-c6bd365bd130c8674826461d3c625970","runtime_seconds":1.3631082},{"desc":"uploading artifact run-5dnoc190-curvesRecall-ConfidenceB_table-ddbd7602aab0c851720d67bd4f14955b","runtime_seconds":1.0405408,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3046862,"progress":"21.4KB/21.4KB"}]}],"total_operations":5}}
+{"time":"2025-06-30T13:39:16.4727854+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-30T13:39:16.7482943+01:00","level":"INFO","msg":"stream: closing","id":"5dnoc190"}
+{"time":"2025-06-30T13:39:16.7482943+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:39:16.7482943+01:00","level":"INFO","msg":"sender: closed","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:39:16.7482943+01:00","level":"INFO","msg":"handler: closed","stream_id":"5dnoc190"}
+{"time":"2025-06-30T13:39:16.7482943+01:00","level":"INFO","msg":"stream: closed","id":"5dnoc190"}

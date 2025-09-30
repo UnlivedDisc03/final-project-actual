@@ -1,0 +1,7 @@
+{"time":"2025-07-07T11:21:29.7406041+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250707_112128-yaye6lel\\logs\\debug-core.log"}
+{"time":"2025-07-07T11:21:30.0256101+01:00","level":"INFO","msg":"stream: created new stream","id":"yaye6lel"}
+{"time":"2025-07-07T11:21:30.0256101+01:00","level":"INFO","msg":"sender: started","stream_id":"yaye6lel"}
+{"time":"2025-07-07T11:21:30.0256101+01:00","level":"INFO","msg":"stream: started","id":"yaye6lel"}
+{"time":"2025-07-07T11:21:30.0261197+01:00","level":"INFO","msg":"handler: started","stream_id":"yaye6lel"}
+{"time":"2025-07-07T11:21:30.0261299+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"yaye6lel"}
+{"time":"2025-07-07T11:21:30.2343629+01:00","level":"INFO","msg":"Starting system monitor"}

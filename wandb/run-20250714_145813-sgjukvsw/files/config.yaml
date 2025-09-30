@@ -1,0 +1,110 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            3b4280fn9nlt6vgxjeh72ie8yi1c67ss:
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "214748360704"
+                        used: "192147722240"
+                email: UnlivedDisc03@gmail.com
+                executable: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Scripts\python.exe
+                git:
+                    commit: 2d796350657abac6eb7562f4c3b3d24a8d5c7693
+                    remote: https://github.com/UnlivedDisc03/final-project-actual
+                gpu: NVIDIA GeForce GTX 1650 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 1024
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce GTX 1650 Ti
+                      uuid: GPU-995cbeaf-e18e-6bd3-44db-08596f0ce625
+                host: DESKTOP-JBEA1UO
+                memory:
+                    total: "33685716992"
+                os: Windows-10-10.0.19045-SP0
+                program: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py
+                python: CPython 3.12.8
+                root: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone
+                startedAt: "2025-07-14T13:58:13.370689Z"
+                writerId: 3b4280fn9nlt6vgxjeh72ie8yi1c67ss
+        m: []
+        python_version: 3.12.8
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 13
+                - 16
+                - 61
+            "4": 3.12.8
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+        visualize:
+            curves/Precision-Recall(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Precision-Recall(B)
+                        x-axis-title: Recall
+                        y-axis-title: Precision
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Precision-Recall(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+augmentations:
+    value:
+        degrees: 10
+        erasing: 0.5
+        fliplr: 0.5
+        hsv_h: 0
+        hsv_s: 0
+        hsv_v: 0.1
+        mosaic: 0.33
+        perspective: 5e-05
+        scale: 0.25
+        seed: 42
+        shear: 0.25
+        translate: 0.2
+train:
+    value:
+        agg_func: median
+        epochs: 100
+        image_size: 640
+        train_tomato: false
+        weighted_dataset: true
+        yolo: 8

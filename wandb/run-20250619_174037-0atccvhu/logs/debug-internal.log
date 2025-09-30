@@ -1,0 +1,16 @@
+{"time":"2025-06-19T17:40:37.4402898+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250619_174037-0atccvhu\\logs\\debug-core.log"}
+{"time":"2025-06-19T17:40:37.9481392+01:00","level":"INFO","msg":"stream: created new stream","id":"0atccvhu"}
+{"time":"2025-06-19T17:40:37.9481392+01:00","level":"INFO","msg":"stream: started","id":"0atccvhu"}
+{"time":"2025-06-19T17:40:37.9481392+01:00","level":"INFO","msg":"sender: started","stream_id":"0atccvhu"}
+{"time":"2025-06-19T17:40:37.9481392+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"0atccvhu"}
+{"time":"2025-06-19T17:40:37.9481392+01:00","level":"INFO","msg":"handler: started","stream_id":"0atccvhu"}
+{"time":"2025-06-19T17:40:38.2586316+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-19T18:19:25.4193219+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T18:19:25.4194204+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T18:19:26.4213491+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_0atccvhu_model","runtime_seconds":2.3456525,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5949491,"progress":"3.1MB/6.0MB"}]},{"desc":"uploading artifact run-0atccvhu-curvesPrecision-RecallB_table-eaeec90f8b8ab75b5b902c504d02481f","runtime_seconds":2.029574},{"desc":"uploading artifact run-0atccvhu-curvesF1-ConfidenceB_table-467ec70a1899599635a6e7f5b810bf42","runtime_seconds":1.6949632000000001},{"desc":"uploading artifact run-0atccvhu-curvesPrecision-ConfidenceB_table-71563b7055240ccbc010c70a1e4371a1","runtime_seconds":1.3328717,"subtasks":[{"desc":"curves/Precision-Confidence(B)_table.table.json","runtime_seconds":0.368454,"progress":"21.4KB/21.4KB"}]},{"desc":"uploading artifact run-0atccvhu-curvesRecall-ConfidenceB_table-f83935c0cbc9d3087ad18a20b789642f","runtime_seconds":1.0273937,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.0962212,"progress":"21.4KB/21.4KB"}]}],"total_operations":5}}
+{"time":"2025-06-19T18:19:30.8919831+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-19T18:19:31.3736793+01:00","level":"INFO","msg":"stream: closing","id":"0atccvhu"}
+{"time":"2025-06-19T18:19:31.3736793+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"0atccvhu"}
+{"time":"2025-06-19T18:19:31.3736793+01:00","level":"INFO","msg":"sender: closed","stream_id":"0atccvhu"}
+{"time":"2025-06-19T18:19:31.3736793+01:00","level":"INFO","msg":"handler: closed","stream_id":"0atccvhu"}
+{"time":"2025-06-19T18:19:31.3742275+01:00","level":"INFO","msg":"stream: closed","id":"0atccvhu"}

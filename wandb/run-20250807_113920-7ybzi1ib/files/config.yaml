@@ -1,0 +1,77 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            i6vb87tp6pvrg5oqiifhmrogdmaxf4uf:
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "214748360704"
+                        used: "191326973952"
+                email: UnlivedDisc03@gmail.com
+                executable: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Scripts\python.exe
+                git:
+                    commit: 95cc6a76a5a823d028074ff988d37030e838d19c
+                    remote: https://github.com/UnlivedDisc03/final-project-actual
+                gpu: NVIDIA GeForce GTX 1650 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 1024
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce GTX 1650 Ti
+                      uuid: GPU-995cbeaf-e18e-6bd3-44db-08596f0ce625
+                host: DESKTOP-JBEA1UO
+                memory:
+                    total: "33685716992"
+                os: Windows-10-10.0.19045-SP0
+                program: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py
+                python: CPython 3.12.8
+                root: C:\Users\Unliv\PycharmProjects\IndividualProjectRedone
+                startedAt: "2025-08-07T10:39:20.659431Z"
+                writerId: i6vb87tp6pvrg5oqiifhmrogdmaxf4uf
+        m: []
+        python_version: 3.12.8
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 13
+                - 16
+                - 61
+            "4": 3.12.8
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+augmentations:
+    value:
+        degrees: 10
+        erasing: 0.5
+        fliplr: 0.5
+        hsv_h: 0
+        hsv_s: 0
+        hsv_v: 0.1
+        mosaic: 0.33
+        perspective: 5e-05
+        scale: 0.25
+        seed: 42
+        shear: 0.25
+        translate: 0.2
+train:
+    value:
+        agg_func: median
+        epochs: 120
+        image_size: 640
+        train_tomato: true
+        weighted_dataset: true
+        yolo: 8

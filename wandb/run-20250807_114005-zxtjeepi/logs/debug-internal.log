@@ -1,0 +1,13 @@
+{"time":"2025-08-07T11:40:05.7273838+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-08-07T11:40:06.1373546+01:00","level":"INFO","msg":"stream: created new stream","id":"zxtjeepi"}
+{"time":"2025-08-07T11:40:06.1373546+01:00","level":"INFO","msg":"stream: started","id":"zxtjeepi"}
+{"time":"2025-08-07T11:40:06.1373546+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:40:06.1373546+01:00","level":"INFO","msg":"handler: started","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:40:06.1373546+01:00","level":"INFO","msg":"sender: started","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:50:25.1440028+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_zxtjeepi_model","runtime_seconds":5.0169629,"subtasks":[{"desc":"best.pt","runtime_seconds":3.9811969,"progress":"3.5MB/5.9MB"}]},{"desc":"uploading artifact run-zxtjeepi-curvesPrecision-ConfidenceB_table-bae713c1d88397f49b7dd210d746388b","runtime_seconds":2.1631115},{"desc":"uploading artifact run-zxtjeepi-curvesRecall-ConfidenceB_table-b161ffbdc5ed37dcb00b868303536618","runtime_seconds":1.2157954},{"desc":"uploading config.yaml","runtime_seconds":0.1702831,"progress":"7.8KB/7.8KB"}],"total_operations":4}}
+{"time":"2025-08-07T11:50:28.662827+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-07T11:50:29.3082542+01:00","level":"INFO","msg":"stream: closing","id":"zxtjeepi"}
+{"time":"2025-08-07T11:50:29.3091818+01:00","level":"INFO","msg":"sender: closed","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:50:29.3310088+01:00","level":"INFO","msg":"handler: closed","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:50:29.3310088+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"zxtjeepi"}
+{"time":"2025-08-07T11:50:29.3310088+01:00","level":"INFO","msg":"stream: closed","id":"zxtjeepi"}

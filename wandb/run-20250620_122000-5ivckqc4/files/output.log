@@ -1,0 +1,82 @@
+New https://pypi.org/project/ultralytics/8.3.157 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.3.156  Python-3.12.8 torch-2.7.1+cu128 CUDA:0 (NVIDIA GeForce GTX 1650 Ti, 4096MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\dataset.yaml, degrees=0.0, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=3, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=train8, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=Final Individual Project, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=Final Individual Project\train8, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=42, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+Overriding model.yaml nc=80 with nc=6
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    752482  ultralytics.nn.modules.head.Detect           [6, [64, 128, 256]]
+Model summary: 129 layers, 3,012,018 parameters, 3,012,002 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+WARNING [34m[1mAMP: [0mchecks failed . AMP training on NVIDIA GeForce GTX 1650 Ti GPU may cause NaN losses or zero-mAP results, so AMP will be disabled during training.
+[34m[1mtrain: [0mFast image access  (ping: 0.20.0 ms, read: 205.975.9 MB/s, size: 2564.3 KB)
+[34m[1mtrain: [0mScanning C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\train\labels.cache... 643 images, 0 backgrounds, 0 corrupt: 100%|██████████| 643/643 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 50, in <module>
+    training()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 21, in training
+    results = model.train(data=dataset.dataset_path, epochs=configs.epochs, imgsz=configs.image_size, device=0, project=logger.logger.project, seed=42)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\model.py", line 797, in train
+    self.trainer.train()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 227, in train
+    self._do_train(world_size)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 348, in _do_train
+    self._setup_train(world_size)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 307, in _setup_train
+    self.train_loader = self.get_dataloader(
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\models\yolo\detect\train.py", line 90, in get_dataloader
+    return build_dataloader(dataset, batch_size, workers, shuffle, rank)  # return dataloader
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\data\build.py", line 183, in build_dataloader
+    return InfiniteDataLoader(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\data\build.py", line 58, in __init__
+    self.iterator = super().__iter__()
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 493, in __iter__
+    return self._get_iterator()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 424, in _get_iterator
+    return _MultiProcessingDataLoaderIter(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 1171, in __init__
+    w.start()
+  File "C:\Users\Unliv\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\context.py", line 337, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\popen_spawn_win32.py", line 95, in __init__
+    reduction.dump(process_obj, to_child)
+  File "C:\Users\Unliv\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\reduction.py", line 60, in dump
+    ForkingPickler(file, protocol).dump(obj)
+_pickle.PicklingError: Can't pickle <class 'ultralytics.data.dataset.YOLODataset'>: it's not the same object as ultralytics.data.dataset.YOLODataset

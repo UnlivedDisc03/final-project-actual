@@ -1,0 +1,13 @@
+{"time":"2025-07-17T16:00:23.8332294+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-17T16:00:24.1642142+01:00","level":"INFO","msg":"stream: created new stream","id":"77wkl06i"}
+{"time":"2025-07-17T16:00:24.1647434+01:00","level":"INFO","msg":"stream: started","id":"77wkl06i"}
+{"time":"2025-07-17T16:00:24.1647434+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:00:24.1647434+01:00","level":"INFO","msg":"sender: started","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:00:24.1647434+01:00","level":"INFO","msg":"handler: started","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:37:36.9594128+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_77wkl06i_model","runtime_seconds":2.2040198,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5059369999999999,"progress":"2.6MB/6.0MB"}]},{"desc":"uploading artifact run-77wkl06i-curvesPrecision-RecallB_table-24583ed276436fa11527cd14987e0964","runtime_seconds":1.9383394},{"desc":"uploading artifact run-77wkl06i-curvesF1-ConfidenceB_table-c1b68a262f99a2af7ade90ca94c78791","runtime_seconds":1.6673757999999999},{"desc":"uploading artifact run-77wkl06i-curvesPrecision-ConfidenceB_table-cd55b70b7ac5b7c071bb6afaeb515f48","runtime_seconds":1.3377092},{"desc":"uploading artifact run-77wkl06i-curvesRecall-ConfidenceB_table-16ec2874ae0f84f1cc841898c74efeb9","runtime_seconds":1.0434299,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3242556,"progress":"21.4KB/21.4KB"}]}],"total_operations":5}}
+{"time":"2025-07-17T16:37:39.6111443+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-17T16:37:39.9788845+01:00","level":"INFO","msg":"stream: closing","id":"77wkl06i"}
+{"time":"2025-07-17T16:37:39.9788845+01:00","level":"INFO","msg":"handler: closed","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:37:39.9788845+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:37:39.9788845+01:00","level":"INFO","msg":"sender: closed","stream_id":"77wkl06i"}
+{"time":"2025-07-17T16:37:39.9788845+01:00","level":"INFO","msg":"stream: closed","id":"77wkl06i"}

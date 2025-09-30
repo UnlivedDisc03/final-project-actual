@@ -1,0 +1,159 @@
+_wandb:
+    value:
+        cli_version: 0.20.1
+        m: []
+        python_version: 3.12.8
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+                - 41
+            "3":
+                - 2
+                - 13
+                - 16
+                - 55
+                - 61
+            "4": 3.12.8
+            "5": 0.20.1
+            "8":
+                - 3
+            "12": 0.20.1
+            "13": windows-amd64
+        visualize:
+            curves/F1-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: F1-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: F1
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/F1-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Precision-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Precision-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: Precision
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Precision-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Precision-Recall(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Precision-Recall(B)
+                        x-axis-title: Recall
+                        y-axis-title: Precision
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Precision-Recall(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Recall-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Recall-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: Recall
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Recall-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+train:
+    value:
+        agg_func: median
+        epochs: 100
+        image_size: 640
+        weighted_dataset: true
+        yolo: 8

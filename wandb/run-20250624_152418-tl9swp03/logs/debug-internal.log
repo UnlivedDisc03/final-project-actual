@@ -1,0 +1,7 @@
+{"time":"2025-06-24T15:24:19.3156101+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250624_152418-tl9swp03\\logs\\debug-core.log"}
+{"time":"2025-06-24T15:24:19.7893982+01:00","level":"INFO","msg":"stream: created new stream","id":"tl9swp03"}
+{"time":"2025-06-24T15:24:19.7893982+01:00","level":"INFO","msg":"stream: started","id":"tl9swp03"}
+{"time":"2025-06-24T15:24:19.7968065+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"tl9swp03"}
+{"time":"2025-06-24T15:24:19.7986118+01:00","level":"INFO","msg":"sender: started","stream_id":"tl9swp03"}
+{"time":"2025-06-24T15:24:19.7991329+01:00","level":"INFO","msg":"handler: started","stream_id":"tl9swp03"}
+{"time":"2025-06-24T15:24:20.1032681+01:00","level":"INFO","msg":"Starting system monitor"}

@@ -1,0 +1,13 @@
+{"time":"2025-07-15T13:15:39.9959016+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-15T13:15:40.3025555+01:00","level":"INFO","msg":"stream: created new stream","id":"ihls9em3"}
+{"time":"2025-07-15T13:15:40.3025555+01:00","level":"INFO","msg":"stream: started","id":"ihls9em3"}
+{"time":"2025-07-15T13:15:40.3025555+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ihls9em3"}
+{"time":"2025-07-15T13:15:40.3025555+01:00","level":"INFO","msg":"handler: started","stream_id":"ihls9em3"}
+{"time":"2025-07-15T13:15:40.3025555+01:00","level":"INFO","msg":"sender: started","stream_id":"ihls9em3"}
+{"time":"2025-07-15T16:04:52.4269692+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_ihls9em3_model","runtime_seconds":2.3637365,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5390359,"progress":"3.0MB/6.0MB"}]},{"desc":"uploading artifact run-ihls9em3-curvesPrecision-RecallB_table-e8d9c010ad63ac5d2e1d573222b92e00","runtime_seconds":2.0723391},{"desc":"uploading artifact run-ihls9em3-curvesF1-ConfidenceB_table-3e361f96c2b5183b871fb2d5df4bd30b","runtime_seconds":1.7174729},{"desc":"uploading artifact run-ihls9em3-curvesPrecision-ConfidenceB_table-eb23977da17d2c9dc46c64747bc7b017","runtime_seconds":1.3713824,"subtasks":[{"desc":"curves/Precision-Confidence(B)_table.table.json","runtime_seconds":0.6358224,"progress":"30.0KB/30.0KB"}]},{"desc":"uploading artifact run-ihls9em3-curvesRecall-ConfidenceB_table-81212caa50d2d8c9c0f331c06ea51e0f","runtime_seconds":1.0419093,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3048215,"progress":"30.2KB/30.2KB"}]},{"desc":"uploading config.yaml","runtime_seconds":0.5895717,"progress":"7.8KB/7.8KB"}],"total_operations":6}}
+{"time":"2025-07-15T16:04:55.8925469+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-15T16:04:56.2185039+01:00","level":"INFO","msg":"stream: closing","id":"ihls9em3"}
+{"time":"2025-07-15T16:04:56.2185039+01:00","level":"INFO","msg":"handler: closed","stream_id":"ihls9em3"}
+{"time":"2025-07-15T16:04:56.2185039+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ihls9em3"}
+{"time":"2025-07-15T16:04:56.2185039+01:00","level":"INFO","msg":"sender: closed","stream_id":"ihls9em3"}
+{"time":"2025-07-15T16:04:56.2185039+01:00","level":"INFO","msg":"stream: closed","id":"ihls9em3"}

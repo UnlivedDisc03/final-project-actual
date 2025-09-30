@@ -1,0 +1,51 @@
+2025-06-24 15:24:18,968 INFO    MainThread:21784 [wandb_setup.py:_flush():81] Current SDK version is 0.20.1
+2025-06-24 15:24:18,969 INFO    MainThread:21784 [wandb_setup.py:_flush():81] Configure stats pid to 21784
+2025-06-24 15:24:18,969 INFO    MainThread:21784 [wandb_setup.py:_flush():81] Loading settings from C:\Users\Unliv\.config\wandb\settings
+2025-06-24 15:24:18,969 INFO    MainThread:21784 [wandb_setup.py:_flush():81] Loading settings from C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\settings
+2025-06-24 15:24:18,969 INFO    MainThread:21784 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-06-24 15:24:18,969 INFO    MainThread:21784 [wandb_init.py:setup_run_log_directory():703] Logging user logs to C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\run-20250624_152418-tl9swp03\logs\debug.log
+2025-06-24 15:24:18,975 INFO    MainThread:21784 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\wandb\run-20250624_152418-tl9swp03\logs\debug-internal.log
+2025-06-24 15:24:18,976 INFO    MainThread:21784 [wandb_init.py:init():831] calling init triggers
+2025-06-24 15:24:18,976 INFO    MainThread:21784 [wandb_init.py:init():836] wandb.init called with sweep_config: {}
+config: {'train': {'agg_func': 'median', 'epochs': 10, 'weighted_dataset': True, 'image_size': 640, 'yolo': 8}, '_wandb': {}}
+2025-06-24 15:24:18,976 INFO    MainThread:21784 [wandb_init.py:init():872] starting backend
+2025-06-24 15:24:19,220 INFO    MainThread:21784 [wandb_init.py:init():875] sending inform_init request
+2025-06-24 15:24:19,307 INFO    MainThread:21784 [wandb_init.py:init():883] backend started and connected
+2025-06-24 15:24:19,311 INFO    MainThread:21784 [wandb_init.py:init():956] updated telemetry
+2025-06-24 15:24:19,391 INFO    MainThread:21784 [wandb_init.py:init():980] communicating run to backend with 90.0 second timeout
+2025-06-24 15:24:20,093 INFO    MainThread:21784 [wandb_init.py:init():1032] starting run threads in backend
+2025-06-24 15:24:20,321 INFO    MainThread:21784 [wandb_run.py:_console_start():2453] atexit reg
+2025-06-24 15:24:20,321 INFO    MainThread:21784 [wandb_run.py:_redirect():2301] redirect: wrap_raw
+2025-06-24 15:24:20,321 INFO    MainThread:21784 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2025-06-24 15:24:20,322 INFO    MainThread:21784 [wandb_run.py:_redirect():2393] Redirects installed.
+2025-06-24 15:24:20,329 INFO    MainThread:21784 [wandb_init.py:init():1078] run started, returning control to user process
+2025-06-24 15:28:18,958 WARNING MsgRouterThr:21784 [router.py:message_loop():63] [no run ID] message_loop has been closed
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\lib\sock_client.py", line 208, in _read_packet_bytes
+    data = self._sock.recv(self._bufsize)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\interface\router_sock.py", line 27, in _read_message
+    return self._sock_client.read_server_response(timeout=1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\lib\sock_client.py", line 235, in read_server_response
+    data = self._read_packet_bytes(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\lib\sock_client.py", line 212, in _read_packet_bytes
+    raise SockClientClosedError from e
+wandb.sdk.lib.sock_client.SockClientClosedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\interface\router.py", line 56, in message_loop
+    msg = self._read_message()
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\interface\router_sock.py", line 29, in _read_message
+    raise MessageRouterClosedError from e
+wandb.sdk.interface.router.MessageRouterClosedError
+2025-06-24 15:28:19,009 INFO    MsgRouterThr:21784 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

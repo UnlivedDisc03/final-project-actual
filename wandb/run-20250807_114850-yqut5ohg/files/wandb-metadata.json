@@ -1,0 +1,40 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "CPython 3.12.8",
+  "startedAt": "2025-08-07T10:48:50.365909Z",
+  "program": "C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\train.py",
+  "codePath": "train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "https://github.com/UnlivedDisc03/final-project-actual",
+    "commit": "95cc6a76a5a823d028074ff988d37030e838d19c"
+  },
+  "email": "UnlivedDisc03@gmail.com",
+  "root": "C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone",
+  "host": "DESKTOP-JBEA1UO",
+  "executable": "C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\.venv\\Scripts\\python.exe",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce GTX 1650 Ti",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "214748360704",
+      "used": "191353536512"
+    }
+  },
+  "memory": {
+    "total": "33685716992"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1650 Ti",
+      "memoryTotal": "4294967296",
+      "cudaCores": 1024,
+      "architecture": "Turing",
+      "uuid": "GPU-995cbeaf-e18e-6bd3-44db-08596f0ce625"
+    }
+  ],
+  "cudaVersion": "12.8",
+  "writerId": "3vmxwr9ybezefsg44szdi1ghl7o2nx98"
+}

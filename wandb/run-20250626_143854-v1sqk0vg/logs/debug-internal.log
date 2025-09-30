@@ -1,0 +1,16 @@
+{"time":"2025-06-26T14:38:55.2079936+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250626_143854-v1sqk0vg\\logs\\debug-core.log"}
+{"time":"2025-06-26T14:38:55.5100087+01:00","level":"INFO","msg":"stream: created new stream","id":"v1sqk0vg"}
+{"time":"2025-06-26T14:38:55.5100087+01:00","level":"INFO","msg":"stream: started","id":"v1sqk0vg"}
+{"time":"2025-06-26T14:38:55.5100087+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:38:55.5100087+01:00","level":"INFO","msg":"handler: started","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:38:55.5100087+01:00","level":"INFO","msg":"sender: started","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:38:55.7355808+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T14:46:30.775941+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T14:46:30.775941+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T14:46:31.7807118+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_v1sqk0vg_model","runtime_seconds":2.1986263,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5943151,"progress":"2.9MB/5.9MB"}]},{"desc":"uploading artifact run-v1sqk0vg-curvesPrecision-RecallB_table-02e84d02dddf09bf0e2592fd6b3dfd96","runtime_seconds":1.9318349000000001},{"desc":"uploading artifact run-v1sqk0vg-curvesF1-ConfidenceB_table-776ca6750062c016ebac5ad377bd1433","runtime_seconds":1.6275411},{"desc":"uploading artifact run-v1sqk0vg-curvesPrecision-ConfidenceB_table-fe4a632bef50678e18fdc98524ed689b","runtime_seconds":1.3129305},{"desc":"uploading artifact run-v1sqk0vg-curvesRecall-ConfidenceB_table-48bd8da0f55467c07f4862f986785e17","runtime_seconds":1.0351173,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.2717147,"progress":"21.3KB/21.3KB"}]}],"total_operations":5}}
+{"time":"2025-06-26T14:46:34.0189964+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T14:46:34.2658117+01:00","level":"INFO","msg":"stream: closing","id":"v1sqk0vg"}
+{"time":"2025-06-26T14:46:34.2658117+01:00","level":"INFO","msg":"handler: closed","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:46:34.2658117+01:00","level":"INFO","msg":"sender: closed","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:46:34.2658117+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"v1sqk0vg"}
+{"time":"2025-06-26T14:46:34.2658117+01:00","level":"INFO","msg":"stream: closed","id":"v1sqk0vg"}

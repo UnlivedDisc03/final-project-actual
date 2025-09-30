@@ -1,0 +1,71 @@
+Dataset File Updated.
+Selected weighted dataset
+New https://pypi.org/project/ultralytics/8.3.175 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.3.156  Python-3.12.8 torch-2.7.1+cu128 CUDA:0 (NVIDIA GeForce GTX 1650 Ti, 4096MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\dataset.yaml, degrees=10, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.15, dynamic=False, embed=None, epochs=1, erasing=0.5, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.0, hsv_s=0.0, hsv_v=0.1, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.001, lrf=1e-05, mask_ratio=4, max_det=300, minimum_epochs=100, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=0.33, multi_scale=False, name=train3, nbs=64, nms=False, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=3, perspective=5e-05, plots=True, pose=12.0, pretrained=True, profile=False, project=Tomato Training Output, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=Tomato Training Output\train3, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.25, seed=42, shear=0.25, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.2, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.00075, workers=4, workspace=None
+Overriding model.yaml nc=80 with nc=6
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    752482  ultralytics.nn.modules.head.Detect           [6, [64, 128, 256]]
+Model summary: 129 layers, 3,012,018 parameters, 3,012,002 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+WARNING [34m[1mAMP: [0mchecks failed . AMP training on NVIDIA GeForce GTX 1650 Ti GPU may cause NaN losses or zero-mAP results, so AMP will be disabled during training.
+[34m[1mtrain: [0mFast image access  (ping: 0.10.0 ms, read: 2223.9495.3 MB/s, size: 2564.3 KB)
+[34m[1mtrain: [0mScanning C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\train\labels.cache... 643 images, 0 backgrounds, 0 corrupt: 100%|##########| 643/643 [00:00<?, ?it/s]
+counts: [ 348  520 1467  982  797 3667]
+[34m[1mval: [0mFast image access  (ping: 0.10.0 ms, read: 2095.3550.8 MB/s, size: 2588.6 KB)
+[34m[1mval: [0mScanning C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\val\labels.cache... 161 images, 0 backgrounds, 0 corrupt: 100%|##########| 161/161 [00:00<?, ?it/s]
+counts: [ 72 116 387 269 223 929]
+Plotting labels to Tomato Training Output\train3\labels.jpg...
+[34m[1moptimizer:[0m AdamW(lr=0.001, momentum=0.937) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.00075), 63 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 4 dataloader workers
+Logging results to [1mTomato Training Output\train3[0m
+Starting training for 1 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+        1/1      3.61G      1.147      2.749      1.118         36        640: 100%|##########| 41/41 [07:03<00:00, 10.34s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|##########| 6/6 [00:46<00:00,  7.74s/it]
+                   all        161       1996     0.0587      0.444      0.105     0.0591
+
+1 epochs completed in 0.133 hours.
+Optimizer stripped from Tomato Training Output\train3\weights\last.pt, 6.2MB
+Optimizer stripped from Tomato Training Output\train3\weights\best.pt, 6.2MB
+
+Validating Tomato Training Output\train3\weights\best.pt...
+Ultralytics 8.3.156  Python-3.12.8 torch-2.7.1+cu128 CUDA:0 (NVIDIA GeForce GTX 1650 Ti, 4096MiB)
+Model summary (fused): 72 layers, 3,006,818 parameters, 0 gradients, 8.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|##########| 6/6 [00:34<00:00,  5.69s/it]
+                   all        161       1996     0.0585      0.444      0.105     0.0591
+       b_fully_ripened         40         72     0.0136      0.708      0.123     0.0773
+        b_half_ripened         52        116     0.0255       0.44     0.0538     0.0298
+               b_green         71        387    0.00619       0.55     0.0635     0.0288
+       l_fully_ripened         59        269     0.0384      0.569      0.197      0.108
+        l_half_ripened         67        223      0.217      0.184      0.143     0.0864
+               l_green         69        929     0.0503      0.215     0.0526     0.0242
+Speed: 3.2ms preprocess, 30.7ms inference, 0.0ms loss, 50.8ms postprocess per image
+Results saved to [1mTomato Training Output\train3[0m

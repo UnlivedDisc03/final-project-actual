@@ -1,0 +1,16 @@
+{"time":"2025-06-20T12:56:47.0765531+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250620_125646-2luhbrcs\\logs\\debug-core.log"}
+{"time":"2025-06-20T12:56:47.4245016+01:00","level":"INFO","msg":"stream: created new stream","id":"2luhbrcs"}
+{"time":"2025-06-20T12:56:47.4245016+01:00","level":"INFO","msg":"stream: started","id":"2luhbrcs"}
+{"time":"2025-06-20T12:56:47.4245016+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T12:56:47.4245016+01:00","level":"INFO","msg":"sender: started","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T12:56:47.4245016+01:00","level":"INFO","msg":"handler: started","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T12:56:47.6364933+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-20T13:00:28.6989582+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-20T13:00:28.6989582+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-20T13:00:29.7162773+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_2luhbrcs_model","runtime_seconds":2.2766631999999998,"subtasks":[{"desc":"best.pt","runtime_seconds":1.3778497,"progress":"3.3MB/5.9MB"}]},{"desc":"uploading artifact run-2luhbrcs-curvesPrecision-RecallB_table-afc5fb6ca6983ace60f3c1cf6a9ec713","runtime_seconds":1.9978517999999998},{"desc":"uploading artifact run-2luhbrcs-curvesF1-ConfidenceB_table-b312e043e80de8738e43b3d41b406e3c","runtime_seconds":1.6642384},{"desc":"uploading artifact run-2luhbrcs-curvesPrecision-ConfidenceB_table-894d751c7c2d637822c3f49b8b8327ea","runtime_seconds":1.4064353},{"desc":"uploading artifact run-2luhbrcs-curvesRecall-ConfidenceB_table-e7a9bf53137598a73bde356b4fcbba90","runtime_seconds":1.0367758}],"total_operations":5}}
+{"time":"2025-06-20T13:00:31.9773587+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-20T13:00:32.2787397+01:00","level":"INFO","msg":"stream: closing","id":"2luhbrcs"}
+{"time":"2025-06-20T13:00:32.2787397+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T13:00:32.2787397+01:00","level":"INFO","msg":"sender: closed","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T13:00:32.2787397+01:00","level":"INFO","msg":"handler: closed","stream_id":"2luhbrcs"}
+{"time":"2025-06-20T13:00:32.2787397+01:00","level":"INFO","msg":"stream: closed","id":"2luhbrcs"}

@@ -1,0 +1,16 @@
+{"time":"2025-06-19T13:52:50.8709757+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250619_135250-yud0hobt\\logs\\debug-core.log"}
+{"time":"2025-06-19T13:52:51.1984062+01:00","level":"INFO","msg":"stream: created new stream","id":"yud0hobt"}
+{"time":"2025-06-19T13:52:51.198959+01:00","level":"INFO","msg":"stream: started","id":"yud0hobt"}
+{"time":"2025-06-19T13:52:51.198959+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:52:51.198959+01:00","level":"INFO","msg":"sender: started","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:52:51.198959+01:00","level":"INFO","msg":"handler: started","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:52:51.4859489+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-19T13:59:19.9585806+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T13:59:19.9585806+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T13:59:20.9761443+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_yud0hobt_model","runtime_seconds":2.2069755,"subtasks":[{"desc":"best.pt","runtime_seconds":1.1474013,"progress":"1.6MB/5.9MB"}]},{"desc":"uploading artifact run-yud0hobt-curvesF1-ConfidenceB_table-e831bba606dd04a8d10a51cc4a763693","runtime_seconds":1.6254853},{"desc":"uploading artifact run-yud0hobt-curvesPrecision-ConfidenceB_table-4b0b54b39aa22d0202a4ce3ad30a3ab1","runtime_seconds":1.3351517},{"desc":"uploading artifact run-yud0hobt-curvesRecall-ConfidenceB_table-1279f9263aeb8fea9d64f9c544fe3525","runtime_seconds":1.0405977,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.1956557,"progress":"21.4KB/21.4KB"}]}],"total_operations":4}}
+{"time":"2025-06-19T13:59:23.8592492+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-19T13:59:24.0981788+01:00","level":"INFO","msg":"stream: closing","id":"yud0hobt"}
+{"time":"2025-06-19T13:59:24.0981788+01:00","level":"INFO","msg":"handler: closed","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:59:24.0981788+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:59:24.0981788+01:00","level":"INFO","msg":"sender: closed","stream_id":"yud0hobt"}
+{"time":"2025-06-19T13:59:24.0981788+01:00","level":"INFO","msg":"stream: closed","id":"yud0hobt"}

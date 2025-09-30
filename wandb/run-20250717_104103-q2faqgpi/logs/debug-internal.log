@@ -1,0 +1,13 @@
+{"time":"2025-07-17T10:41:03.7460083+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-17T10:41:04.0723443+01:00","level":"INFO","msg":"stream: created new stream","id":"q2faqgpi"}
+{"time":"2025-07-17T10:41:04.0723443+01:00","level":"INFO","msg":"stream: started","id":"q2faqgpi"}
+{"time":"2025-07-17T10:41:04.0728592+01:00","level":"INFO","msg":"sender: started","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T10:41:04.0728592+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T10:41:04.0729152+01:00","level":"INFO","msg":"handler: started","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T15:16:30.8596657+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_q2faqgpi_model","runtime_seconds":2.3218477,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5344351,"progress":"3.9MB/6.0MB"}]},{"desc":"uploading artifact run-q2faqgpi-curvesPrecision-RecallB_table-4d734794cde6e957a1be2002f573f883","runtime_seconds":2.0123572},{"desc":"uploading artifact run-q2faqgpi-curvesF1-ConfidenceB_table-779fd2d2521b9e56f9f1e9cffb8b5027","runtime_seconds":1.6919998},{"desc":"uploading artifact run-q2faqgpi-curvesPrecision-ConfidenceB_table-46d50ea8654317df1ae82658b8058bd3","runtime_seconds":1.3695393},{"desc":"uploading artifact run-q2faqgpi-curvesRecall-ConfidenceB_table-93a26957a6c919c340f231d91e0e9b97","runtime_seconds":1.0529724,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.2447914,"progress":"30.1KB/30.1KB"}]}],"total_operations":5}}
+{"time":"2025-07-17T15:16:32.9444401+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-17T15:16:33.3010538+01:00","level":"INFO","msg":"stream: closing","id":"q2faqgpi"}
+{"time":"2025-07-17T15:16:33.3010538+01:00","level":"INFO","msg":"handler: closed","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T15:16:33.3010538+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T15:16:33.3010538+01:00","level":"INFO","msg":"sender: closed","stream_id":"q2faqgpi"}
+{"time":"2025-07-17T15:16:33.3017094+01:00","level":"INFO","msg":"stream: closed","id":"q2faqgpi"}

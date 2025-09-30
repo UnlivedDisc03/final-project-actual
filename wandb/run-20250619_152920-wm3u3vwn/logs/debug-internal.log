@@ -1,0 +1,16 @@
+{"time":"2025-06-19T15:29:21.1136041+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250619_152920-wm3u3vwn\\logs\\debug-core.log"}
+{"time":"2025-06-19T15:29:21.4670714+01:00","level":"INFO","msg":"stream: created new stream","id":"wm3u3vwn"}
+{"time":"2025-06-19T15:29:21.4670714+01:00","level":"INFO","msg":"stream: started","id":"wm3u3vwn"}
+{"time":"2025-06-19T15:29:21.4670714+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T15:29:21.4670714+01:00","level":"INFO","msg":"sender: started","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T15:29:21.4670714+01:00","level":"INFO","msg":"handler: started","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T15:29:21.7267458+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-19T16:17:34.9578658+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T16:17:34.9578658+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T16:17:35.9738608+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_wm3u3vwn_model","runtime_seconds":2.2775462,"subtasks":[{"desc":"best.pt","runtime_seconds":1.1860939,"progress":"1.8MB/6.0MB"}]},{"desc":"uploading artifact run-wm3u3vwn-curvesF1-ConfidenceB_table-92d19d4530aaaf37be318db99d74d447","runtime_seconds":1.6932378},{"desc":"uploading artifact run-wm3u3vwn-curvesPrecision-ConfidenceB_table-514ecd174ce90d4dc2f19f2f5b86bd50","runtime_seconds":1.3909249,"subtasks":[{"desc":"curves/Precision-Confidence(B)_table.table.json","runtime_seconds":0.6322063,"progress":"21.3KB/21.3KB"}]},{"desc":"uploading artifact run-wm3u3vwn-curvesRecall-ConfidenceB_table-6f775f505f842de88e7c54d8dabcffe0","runtime_seconds":1.0495681,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.1556004,"progress":"21.4KB/21.4KB"}]}],"total_operations":4}}
+{"time":"2025-06-19T16:17:38.7893788+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-19T16:17:39.1307755+01:00","level":"INFO","msg":"stream: closing","id":"wm3u3vwn"}
+{"time":"2025-06-19T16:17:39.1308791+01:00","level":"INFO","msg":"sender: closed","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T16:17:39.1308791+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T16:17:39.1310067+01:00","level":"INFO","msg":"handler: closed","stream_id":"wm3u3vwn"}
+{"time":"2025-06-19T16:17:39.1310067+01:00","level":"INFO","msg":"stream: closed","id":"wm3u3vwn"}

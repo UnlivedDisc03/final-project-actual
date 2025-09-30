@@ -1,0 +1,17 @@
+{"time":"2025-06-19T14:05:09.060184+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250619_140508-na87p19m\\logs\\debug-core.log"}
+{"time":"2025-06-19T14:05:09.3919838+01:00","level":"INFO","msg":"stream: created new stream","id":"na87p19m"}
+{"time":"2025-06-19T14:05:09.3925306+01:00","level":"INFO","msg":"stream: started","id":"na87p19m"}
+{"time":"2025-06-19T14:05:09.3925306+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:05:09.3925306+01:00","level":"INFO","msg":"handler: started","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:05:09.3925306+01:00","level":"INFO","msg":"sender: started","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:05:09.6473474+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-19T14:11:49.0794898+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T14:11:49.0794898+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T14:11:49.0996695+01:00","level":"INFO","msg":"api: retrying HTTP error","status":503,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"The service is currently unavailable. Please try again later.\",\"path\":[\"createArtifact\"]}],\"data\":{\"createArtifact\":null}}"}
+{"time":"2025-06-19T14:11:50.0973797+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_na87p19m_model","runtime_seconds":2.2607086,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5631368,"progress":"3.8MB/5.9MB"}]},{"desc":"uploading artifact run-na87p19m-curvesPrecision-RecallB_table-c7098d565279d74e0e4867a2af8009bf","runtime_seconds":1.9756861},{"desc":"uploading artifact run-na87p19m-curvesF1-ConfidenceB_table-410ae0a9497519ef6a325793d9f26537","runtime_seconds":1.656833,"subtasks":[{"desc":"curves/F1-Confidence(B)_table.table.json","runtime_seconds":0.3770703,"progress":"21.4KB/21.4KB"}]},{"desc":"uploading artifact run-na87p19m-curvesPrecision-ConfidenceB_table-d9fc9a7decdacbdacab81ce450249bc2","runtime_seconds":1.3568441,"error_status":"retrying HTTP 503: The service is currently unavailable. Please try again later."},{"desc":"uploading artifact run-na87p19m-curvesRecall-ConfidenceB_table-3d8aabf2a856ad21b7571ca3236c1741","runtime_seconds":1.0521827,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3474966,"progress":"21.4KB/21.4KB"}]}],"total_operations":5}}
+{"time":"2025-06-19T14:11:53.2700781+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-19T14:11:53.546728+01:00","level":"INFO","msg":"stream: closing","id":"na87p19m"}
+{"time":"2025-06-19T14:11:53.546728+01:00","level":"INFO","msg":"handler: closed","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:11:53.546728+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:11:53.546728+01:00","level":"INFO","msg":"sender: closed","stream_id":"na87p19m"}
+{"time":"2025-06-19T14:11:53.546728+01:00","level":"INFO","msg":"stream: closed","id":"na87p19m"}

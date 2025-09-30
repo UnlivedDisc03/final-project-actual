@@ -1,0 +1,13 @@
+{"time":"2025-07-11T15:25:20.919549+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-11T15:25:21.2281502+01:00","level":"INFO","msg":"stream: created new stream","id":"zpzoshqu"}
+{"time":"2025-07-11T15:25:21.2281502+01:00","level":"INFO","msg":"stream: started","id":"zpzoshqu"}
+{"time":"2025-07-11T15:25:21.2286763+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:25:21.2287087+01:00","level":"INFO","msg":"handler: started","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:25:21.2286763+01:00","level":"INFO","msg":"sender: started","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:35:54.6599356+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_zpzoshqu_model","runtime_seconds":2.4473963,"subtasks":[{"desc":"best.pt","runtime_seconds":1.64094,"progress":"4.1MB/6.0MB"}]},{"desc":"uploading artifact run-zpzoshqu-curvesPrecision-RecallB_table-408a50d065260a63f3db4b81074dc1d2","runtime_seconds":2.105074},{"desc":"uploading artifact run-zpzoshqu-curvesF1-ConfidenceB_table-d21e3a35a87ae8ce8e040f47680182a2","runtime_seconds":1.6977026},{"desc":"uploading artifact run-zpzoshqu-curvesPrecision-ConfidenceB_table-1aed7946c45fca1fc6901cfe1e754a10","runtime_seconds":1.4145898},{"desc":"uploading artifact run-zpzoshqu-curvesRecall-ConfidenceB_table-6c407d04fdf9fb4a016f487d51441956","runtime_seconds":1.0457291,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.4294734,"progress":"30.1KB/30.1KB"}]},{"desc":"uploading wandb-summary.json","runtime_seconds":0.2794776,"progress":"7.3KB/7.3KB"}],"total_operations":6}}
+{"time":"2025-07-11T15:35:56.9191559+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-11T15:35:57.3035993+01:00","level":"INFO","msg":"stream: closing","id":"zpzoshqu"}
+{"time":"2025-07-11T15:35:57.3037207+01:00","level":"INFO","msg":"sender: closed","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:35:57.3038415+01:00","level":"INFO","msg":"handler: closed","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:35:57.3038415+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"zpzoshqu"}
+{"time":"2025-07-11T15:35:57.3039716+01:00","level":"INFO","msg":"stream: closed","id":"zpzoshqu"}

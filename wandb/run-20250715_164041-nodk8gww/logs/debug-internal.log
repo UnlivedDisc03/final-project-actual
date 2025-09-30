@@ -1,0 +1,14 @@
+{"time":"2025-07-15T16:40:41.9621878+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-15T16:40:42.4824215+01:00","level":"INFO","msg":"stream: created new stream","id":"nodk8gww"}
+{"time":"2025-07-15T16:40:42.4824215+01:00","level":"INFO","msg":"stream: started","id":"nodk8gww"}
+{"time":"2025-07-15T16:40:42.4824215+01:00","level":"INFO","msg":"handler: started","stream_id":"nodk8gww"}
+{"time":"2025-07-15T16:40:42.4834605+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"nodk8gww"}
+{"time":"2025-07-15T16:40:42.4834605+01:00","level":"INFO","msg":"sender: started","stream_id":"nodk8gww"}
+{"time":"2025-07-15T19:30:28.3228398+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/unliveddisc03-city-university-of-london/Final%20Individual%20Project/nodk8gww/file_stream\": http2: client conn could not be established"}
+{"time":"2025-07-15T19:52:32.5101963+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_nodk8gww_model","runtime_seconds":2.3921234,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5707979,"progress":"2.6MB/6.0MB"}]},{"desc":"uploading artifact run-nodk8gww-curvesPrecision-ConfidenceB_table-44aca6812690c0f4e03eaed523fdd967","runtime_seconds":1.3912499},{"desc":"uploading artifact run-nodk8gww-curvesRecall-ConfidenceB_table-fadb2087b1f15adefb898c76de56559c","runtime_seconds":1.0452915,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3892366,"progress":"30.2KB/30.2KB"}]}],"total_operations":3}}
+{"time":"2025-07-15T19:52:34.9055198+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-15T19:52:35.1532714+01:00","level":"INFO","msg":"stream: closing","id":"nodk8gww"}
+{"time":"2025-07-15T19:52:35.1532714+01:00","level":"INFO","msg":"handler: closed","stream_id":"nodk8gww"}
+{"time":"2025-07-15T19:52:35.1532714+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nodk8gww"}
+{"time":"2025-07-15T19:52:35.1532714+01:00","level":"INFO","msg":"sender: closed","stream_id":"nodk8gww"}
+{"time":"2025-07-15T19:52:35.1538259+01:00","level":"INFO","msg":"stream: closed","id":"nodk8gww"}

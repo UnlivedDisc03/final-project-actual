@@ -1,0 +1,13 @@
+{"time":"2025-07-11T15:02:54.2666414+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-11T15:02:54.603237+01:00","level":"INFO","msg":"stream: created new stream","id":"k8lncbtn"}
+{"time":"2025-07-11T15:02:54.603237+01:00","level":"INFO","msg":"stream: started","id":"k8lncbtn"}
+{"time":"2025-07-11T15:02:54.603237+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:02:54.603237+01:00","level":"INFO","msg":"sender: started","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:02:54.603237+01:00","level":"INFO","msg":"handler: started","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:13:21.8833652+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact run_k8lncbtn_model","runtime_seconds":2.3112381,"subtasks":[{"desc":"best.pt","runtime_seconds":1.5795365000000001,"progress":"3.9MB/6.0MB"}]},{"desc":"uploading artifact run-k8lncbtn-curvesPrecision-RecallB_table-e420c074fd23217ce73202df6d7910b2","runtime_seconds":2.0007925},{"desc":"uploading artifact run-k8lncbtn-curvesF1-ConfidenceB_table-64170372503f4afd181366e43aeaf829","runtime_seconds":1.6844194},{"desc":"uploading artifact run-k8lncbtn-curvesPrecision-ConfidenceB_table-bf36603b12779c005e724fa5cadf47c7","runtime_seconds":1.3836271},{"desc":"uploading artifact run-k8lncbtn-curvesRecall-ConfidenceB_table-aa6e39a5d48cf7d080a5935994621906","runtime_seconds":1.0532089,"subtasks":[{"desc":"curves/Recall-Confidence(B)_table.table.json","runtime_seconds":0.3915206,"progress":"30.1KB/30.1KB"}]},{"desc":"uploading output.log","runtime_seconds":0.8388972,"progress":"8.8KB/8.8KB"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.8388972,"progress":"7.3KB/7.3KB"},{"desc":"uploading config.yaml","runtime_seconds":0.5978414,"progress":"7.6KB/7.6KB"}],"total_operations":8}}
+{"time":"2025-07-11T15:13:23.9865533+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-11T15:13:24.2630731+01:00","level":"INFO","msg":"stream: closing","id":"k8lncbtn"}
+{"time":"2025-07-11T15:13:24.2635861+01:00","level":"INFO","msg":"sender: closed","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:13:24.2636265+01:00","level":"INFO","msg":"handler: closed","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:13:24.2636265+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"k8lncbtn"}
+{"time":"2025-07-11T15:13:24.2636265+01:00","level":"INFO","msg":"stream: closed","id":"k8lncbtn"}

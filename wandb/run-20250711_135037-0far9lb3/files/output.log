@@ -1,0 +1,167 @@
+Dataset File Updated.
+Selected weighted dataset
+New https://pypi.org/project/ultralytics/8.3.164 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.3.156  Python-3.12.8 torch-2.7.1+cu128 CUDA:0 (NVIDIA GeForce GTX 1650 Ti, 4096MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\dataset.yaml, degrees=10, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=10, erasing=0.5, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.0, hsv_s=0.0, hsv_v=0.1, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=0.33, multi_scale=False, name=train, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=5e-05, plots=True, pose=12.0, pretrained=True, profile=False, project=Disease Training Output, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=Disease Training Output\train, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.25, seed=42, shear=0.25, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.2, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+Overriding model.yaml nc=80 with nc=6
+
+                   from  n    params  module                                       arguments
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]
+ 22        [15, 18, 21]  1    752482  ultralytics.nn.modules.head.Detect           [6, [64, 128, 256]]
+Model summary: 129 layers, 3,012,018 parameters, 3,012,002 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+WARNING [34m[1mAMP: [0mchecks failed . AMP training on NVIDIA GeForce GTX 1650 Ti GPU may cause NaN losses or zero-mAP results, so AMP will be disabled during training.
+[34m[1mtrain: [0mFast image access  (ping: 0.20.0 ms, read: 649.2105.8 MB/s, size: 2564.3 KB)
+[34m[1mtrain: [0mScanning C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\train\labels.cache... 643 images, 0 backgrounds, 0 corrupt: 100%|██████████| 643/643 [00:00<?, ?it/s]
+counts: [ 348  520 1467  982  797 3667]
+[34m[1mval: [0mFast image access  (ping: 0.20.0 ms, read: 525.3177.9 MB/s, size: 2588.6 KB)
+[34m[1mval: [0mScanning C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset\val\labels.cache... 161 images, 0 backgrounds, 0 corrupt: 100%|██████████| 161/161 [00:00<?, ?it/s]
+counts: [ 72 116 387 269 223 929]
+Plotting labels to Disease Training Output\train\labels.jpg...
+[34m[1moptimizer:[0m 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically...
+[34m[1moptimizer:[0m AdamW(lr=0.001, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 8 dataloader workers
+Logging results to [1mDisease Training Output\train[0m
+Starting training for 10 epochs...
+Closing dataloader mosaic
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/10      3.63G        1.2      3.088      1.162         12        640: 100%|██████████| 41/41 [00:19<00:00,  2.07it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.53it/s]
+                   all        161       1996      0.607      0.123      0.185      0.111
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/10      3.45G      1.044      1.924      1.024         16        640: 100%|██████████| 41/41 [00:17<00:00,  2.31it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.83it/s]
+                   all        161       1996      0.422      0.348      0.337      0.202
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/10      3.54G     0.9534      1.593     0.9919          9        640: 100%|██████████| 41/41 [00:17<00:00,  2.31it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.53it/s]
+                   all        161       1996      0.548      0.518      0.492      0.316
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/10      3.49G     0.9371      1.403     0.9923         25        640: 100%|██████████| 41/41 [00:17<00:00,  2.34it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.92it/s]
+                   all        161       1996       0.55      0.597      0.548      0.364
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/10      3.45G     0.8783      1.282      0.973         26        640: 100%|██████████| 41/41 [00:17<00:00,  2.32it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.91it/s]
+                   all        161       1996      0.608      0.589      0.622      0.395
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/10      3.45G     0.8126      1.142     0.9506         22        640: 100%|██████████| 41/41 [00:17<00:00,  2.33it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:01<00:00,  3.01it/s]
+                   all        161       1996      0.686      0.656      0.702      0.523
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/10      3.61G     0.7922      1.098     0.9365         28        640: 100%|██████████| 41/41 [00:17<00:00,  2.31it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.75it/s]
+                   all        161       1996      0.703      0.687      0.733      0.549
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/10       3.6G     0.7633      1.023     0.9317         11        640: 100%|██████████| 41/41 [00:18<00:00,  2.27it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.54it/s]
+                   all        161       1996      0.734      0.688       0.75      0.572
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       9/10      3.42G     0.7403     0.9401     0.9207         15        640: 100%|██████████| 41/41 [00:17<00:00,  2.28it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.71it/s]
+                   all        161       1996      0.774      0.702      0.771       0.61
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      10/10      3.55G     0.7142      0.919     0.9093         15        640: 100%|██████████| 41/41 [00:17<00:00,  2.30it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:02<00:00,  2.68it/s]
+                   all        161       1996      0.779      0.697      0.779      0.624
+
+10 epochs completed in 0.074 hours.
+Optimizer stripped from Disease Training Output\train\weights\last.pt, 6.2MB
+Optimizer stripped from Disease Training Output\train\weights\best.pt, 6.2MB
+
+Validating Disease Training Output\train\weights\best.pt...
+Ultralytics 8.3.156  Python-3.12.8 torch-2.7.1+cu128 CUDA:0 (NVIDIA GeForce GTX 1650 Ti, 4096MiB)
+Model summary (fused): 72 layers, 3,006,818 parameters, 0 gradients, 8.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 6/6 [00:03<00:00,  1.65it/s]
+                   all        161       1996      0.779      0.698       0.78      0.624
+       b_fully_ripened         40         72      0.679      0.795      0.788       0.67
+        b_half_ripened         52        116      0.726      0.664      0.748       0.61
+               b_green         71        387      0.846       0.81      0.881      0.706
+       l_fully_ripened         59        269       0.76      0.725      0.787      0.623
+        l_half_ripened         67        223      0.803      0.566      0.723      0.578
+               l_green         69        929      0.861      0.626      0.752      0.556
+Speed: 0.4ms preprocess, 5.7ms inference, 0.0ms loss, 10.0ms postprocess per image
+Results saved to [1mDisease Training Output\train[0m
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 83, in <module>
+    training_tomato()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 29, in training_tomato
+    results = model.train(
+              ^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\model.py", line 797, in train
+    self.trainer.train()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 227, in train
+    self._do_train(world_size)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 500, in _do_train
+    self.run_callbacks("on_train_end")
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\engine\trainer.py", line 189, in run_callbacks
+    callback(self)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\utils\callbacks\wb.py", line 164, in on_train_end
+    _plot_curve(
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\ultralytics\utils\callbacks\wb.py", line 98, in _plot_curve
+    wb.log({id: _custom_table(x_log, y_log, classes, title, x_title, y_title)}, commit=False)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 398, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 456, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 443, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 1987, in log
+    self._log(data=data, step=step, commit=commit)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 1710, in _log
+    self._partial_history_callback(data, step, commit)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 398, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\wandb_run.py", line 1537, in _partial_history_callback
+    self._backend.interface.publish_partial_history(
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\interface\interface.py", line 682, in publish_partial_history
+    data = history_dict_to_json(run, data, step=user_step, ignore_copy_err=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\data_types\utils.py", line 54, in history_dict_to_json
+    payload[key] = val_to_json(
+                   ^^^^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\data_types\utils.py", line 158, in val_to_json
+    val.bind_to_run(run, key, namespace)
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\.venv\Lib\site-packages\wandb\sdk\data_types\table.py", line 599, in bind_to_run
+    with codecs.open(tmp_path, "w", encoding="utf-8") as fp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen codecs>", line 918, in open
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Unliv\\AppData\\Local\\Temp\\tmpp9cry47kwandb-media\\xps4r51b.table.json'

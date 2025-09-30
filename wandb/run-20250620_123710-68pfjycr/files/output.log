@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 52, in <module>
+    training()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 21, in training
+    dataset = Dataset()
+              ^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset.py", line 19, in __init__
+    self.change_path_in_dataset_yaml()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset.py", line 31, in change_path_in_dataset_yaml
+    with open(self.dataset_path, 'w+') as f:
+              ^^^^^^^^^^^^^^^^^
+AttributeError: 'Dataset' object has no attribute 'dataset_path'. Did you mean: 'get_dataset_path'?

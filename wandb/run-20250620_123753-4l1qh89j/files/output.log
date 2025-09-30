@@ -1,0 +1,11 @@
+Dataset File Updated.
+Traceback (most recent call last):
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 52, in <module>
+    training()
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\train.py", line 21, in training
+    dataset = Dataset()
+              ^^^^^^^^^
+  File "C:\Users\Unliv\PycharmProjects\IndividualProjectRedone\dataset.py", line 20, in __init__
+    self.dataset_path = os.path.join(cwd, 'dataset', 'dataset.yaml')
+                                     ^^^
+NameError: name 'cwd' is not defined

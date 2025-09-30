@@ -1,0 +1,15 @@
+{"time":"2025-07-08T12:57:04.4662508+01:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"C:\\Users\\Unliv\\PycharmProjects\\IndividualProjectRedone\\wandb\\run-20250708_125704-kmqfjsto\\logs\\debug-core.log"}
+{"time":"2025-07-08T12:57:04.7831352+01:00","level":"INFO","msg":"stream: created new stream","id":"kmqfjsto"}
+{"time":"2025-07-08T12:57:04.7831352+01:00","level":"INFO","msg":"stream: started","id":"kmqfjsto"}
+{"time":"2025-07-08T12:57:04.7831352+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T12:57:04.7831352+01:00","level":"INFO","msg":"handler: started","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T12:57:04.7831352+01:00","level":"INFO","msg":"sender: started","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T12:57:05.0449284+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-08T14:20:36.4307012+01:00","level":"INFO","msg":"stream: closing","id":"kmqfjsto"}
+{"time":"2025-07-08T14:20:36.4312576+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-08T14:20:36.4312576+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-08T14:20:39.9526539+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-08T14:20:40.2088305+01:00","level":"INFO","msg":"sender: closed","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T14:20:40.2088305+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T14:20:40.2088305+01:00","level":"INFO","msg":"handler: closed","stream_id":"kmqfjsto"}
+{"time":"2025-07-08T14:20:40.2094076+01:00","level":"INFO","msg":"stream: closed","id":"kmqfjsto"}
