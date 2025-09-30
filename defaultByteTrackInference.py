@@ -65,10 +65,15 @@ def main():
     model_path_1 = os.path.join(cwd, 'FinalModels', f'{desired_model_1}', 'best.pt')
     model1 = YOLO(model_path_1)
 
-    #get and load second model (DISEASE DETECTION)
-    desired_model_2 = 15  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
-    model_path_2 = os.path.join(cwd, 'Disease Training Output', f'train{desired_model_2}', 'weights', 'best.pt')
+    # get and load second model (DISEASE DETECTION)
+    desired_model_2 = 'disease'  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
+    model_path_2 = os.path.join(cwd, 'FinalModels', f'{desired_model_2}', 'best.pt')
     model2 = YOLO(model_path_2)
+
+    model1 = model1.to("cuda")
+    model2 = model2.to("cuda")
+    print(model1.device)
+    print(model2.device)
 
     #takes class names of model, chooses which ones to use (omits healthy leaf detection)
     CLASS_NAMES_DICT_2 = model2.model.names
@@ -85,8 +90,8 @@ def main():
 
     # settings
     #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "diseaseTest.mp4") #input disease
-    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/v12BTImproved.mp4" #save output
+    SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixedTRIM.mp4") #input just tomato
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/motatest.mp4" #save output
 
     frame_rate = 30
     lost_track_buffer = round(frame_rate * 1.5)
@@ -176,18 +181,21 @@ def main():
                 cv2.imwrite(filename, crop) #saves image
 
         #Extracts valuable info from each track id (each tracked tomato) which I can use to store on the database for insights.
-        for confidence, class_id, tracker_id in zip(detections.confidence, detections.class_id, detections.tracker_id): #zip combines 3 lists into one for easier accessing
-            x1, y1, x2, y2 = detections.xyxy[0]
+        for confidence, class_id, tracker_id, box in zip(detections.confidence, detections.class_id,
+                                                         detections.tracker_id,
+                                                         detections.xyxy):  # zip combines 3 lists into one for easier accessing
+            x1, y1, x2, y2 = map(int, box)
             w, h = x2 - x1, y2 - y1
-            mot_results.append(f"{index + 1},{tracker_id},{x1},{y1},{w},{h},{confidence:.2f},{class_id+1},1.0\n")#frame, track id, x, y, w, h, confidence for MOT analysis
-            if tracker_id not in all_tomatoes: #if the tomato with a specific id isnt already in the dictionary, add it
+            mot_results.append(
+                f"{index + 1},{tracker_id},{x1},{y1},{w},{h},{confidence:.2f},{class_id + 1},1.0\n")  # frame, track id, x, y, w, h, confidence for MOT analysis
+            if tracker_id not in all_tomatoes:  # if the tomato with a specific id isnt already in the dictionary, add it
                 all_tomatoes[tracker_id] = {
-                "track_id": tracker_id,
-                "class_id": class_id,
-                "class_name": model1.model.names[class_id],
-                "confidence": confidence,
-                "frame_count": 1,#frame count keeps track how many times its been in frame for average confidence
-                "appeared_at": round(index / frame_rate)}
+                    "track_id": tracker_id,
+                    "class_id": class_id,
+                    "class_name": model1.model.names[class_id],
+                    "confidence": confidence,
+                    "frame_count": 1,  # frame count keeps track how many times its been in frame for average confidence
+                    "appeared_at": round(index / frame_rate)}
 
                 save_tomatoes(frame, detections, tracker_id) #saves tomato image only on the first frame of detection, labels as a
 

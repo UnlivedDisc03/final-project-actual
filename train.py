@@ -35,10 +35,10 @@ def training_tomato():
         optimizer='AdamW',
         dropout=configs.dropout,  # stronger dropout,
         minimum_epochs=configs.minimum_epochs,
-        # custom additon made to YOLO's trainer.py to allow minimum training epochs
+        #custom additon made to YOLO's trainer.py to allow minimum training epochs
         patience=configs.patience,
         lr0=configs.lr0,
-        # initial learning rate, 0.001 needed for AdamW, reduced to prevent overfitting. All previois experience dictates lowerd learning rate with L2 always ahd the best effects on overfitting
+        #initial learning rate, 0.001 needed for AdamW, reduced to prevent overfitting. All previois experience dictates lowerd learning rate with L2 always ahd the best effects on overfitting
         lrf=configs.lrf,  # final learning rate
         weight_decay=configs.weight_decay,  # slightly stronger weight decay
         workers=configs.workers,

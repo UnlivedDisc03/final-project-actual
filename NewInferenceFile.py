@@ -66,13 +66,12 @@ def main():
     model1 = YOLO(model_path_1)
 
     #get and load second model (DISEASE DETECTION)
-    desired_model_2 = 15  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
-    model_path_2 = os.path.join(cwd, 'Disease Training Output', f'train{desired_model_2}', 'weights', 'best.pt')
-    #model_path_2 = os.path.join(cwd, 'FinalModels', f'{desired_model_2}', 'best.pt')
+    desired_model_2 = 'disease'  # run number (for testing simplicity sake) 6 = unbalanced 100 epoch images, 7 = rebalanced
+    model_path_2 = os.path.join(cwd, 'FinalModels', f'{desired_model_2}', 'best.pt')
     model2 = YOLO(model_path_2)
 
-    model1 = model1.to("cuda")
-    model2 = model2.to("cuda")
+    # model1 = model1.to("cuda")
+    # model2 = model2.to("cuda")
     print(model1.device)
     print(model2.device)
 
@@ -93,7 +92,7 @@ def main():
     # settings
     SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixed.mp4") #input disease
     #SOURCE_VIDEO_PATH = os.path.join(cwd, "test_videos", "TomatoesMixedTRIM.mp4") #input just tomato
-    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/v12.mp4" #save output
+    TARGET_VIDEO_PATH = cwd + "/prediction_results/latest_prediction/FINAL.mp4" #save output
 
     frame_rate = 30
     ltb = round(frame_rate * 1.5)
